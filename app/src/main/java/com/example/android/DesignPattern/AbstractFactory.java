@@ -1,12 +1,6 @@
 package com.example.android.DesignPattern;
 
-/**
- * 链接：https://blog.csdn.net/empyan/article/details/54897088
- * @Description: 普通工厂、抽象工厂 实际使用情况
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-29 20:23
- * @Email:huangyonghuang@doumi.com
- */
+
 public class AbstractFactory {
 
     public static void main(String[] args) {

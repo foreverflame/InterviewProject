@@ -1,11 +1,6 @@
 package com.example.android.DesignPattern;
 
-/**
- * @Description:
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-29 19:45
- * @Email:huangyonghuang@doumi.com
- */
+
 public class MainTest {
 
     public static void main(String[] args) {

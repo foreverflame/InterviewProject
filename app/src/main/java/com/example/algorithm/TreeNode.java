@@ -5,12 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-/**
- * @Description: 二叉树和数组
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-26 11:32
- * @Email:huangyonghuang@doumi.com
- */
+
 public class TreeNode {
 
 
@@ -267,8 +262,5 @@ public class TreeNode {
         }
         return true;
     }
-
-
-
 
 }

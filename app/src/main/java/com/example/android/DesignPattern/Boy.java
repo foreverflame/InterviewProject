@@ -1,14 +1,10 @@
 package com.example.android.DesignPattern;
 
-/**
- * @Description:
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-29 19:58
- * @Email:huangyonghuang@doumi.com
- */
+
 public class Boy implements Observer {
 
     String name;
+
     public Boy(String name) {
         this.name = name;
     }

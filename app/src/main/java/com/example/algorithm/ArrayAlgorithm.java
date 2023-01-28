@@ -1,17 +1,11 @@
 package com.example.algorithm;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
 
-/**
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-26 15:32
- * @Email:huangyonghuang@doumi.com
- */
+
 public class ArrayAlgorithm {
 
     public static class ListNode {

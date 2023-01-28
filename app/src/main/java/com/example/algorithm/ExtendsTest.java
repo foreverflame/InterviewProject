@@ -1,11 +1,5 @@
 package com.example.algorithm;
 
-/**
- * @Description:
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-29 11:17
- * @Email:huangyonghuang@doumi.com
- */
 public class ExtendsTest {
 
     public static void main(String[] args) {

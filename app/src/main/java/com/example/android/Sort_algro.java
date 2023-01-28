@@ -7,12 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
 
-/**
- * @Description: android 中各个面试知识点的网上链接
- * @Author: huangyonghuang
- * @CreateDate: 2020/3/20 7:33 AM
- * @Email:huangyonghuang@doumi.com
- */
 public class Sort_algro {
 
 

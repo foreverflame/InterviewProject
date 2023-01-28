@@ -3,12 +3,7 @@ package com.example.algorithm;
 
 import java.util.Arrays;
 
-/**
- * @Description: 数据结构，其中包括有序链表合并，
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-25 15:46
- * @Email:huangyonghuang@doumi.com
- */
+
 public class DataStructure {
 
 

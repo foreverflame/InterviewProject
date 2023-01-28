@@ -5,12 +5,6 @@ import android.app.Application;
 import com.squareup.leakcanary.LeakCanary;
 
 
-/**
- * @Description:
- * @Author: huangyonghuang
- * @CreateDate: 2020/3/22 4:37 PM
- * @Email:huangyonghuang@doumi.com
- */
 public class ExampleApplication extends Application {
     @Override public void onCreate() {
         super.onCreate();

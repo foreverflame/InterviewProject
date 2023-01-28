@@ -5,12 +5,6 @@ import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-/**
- * @Description:
- * @Author: huangyonghuang
- * @CreateDate: 2020-01-12 11:04
- * @Email:huangyonghuang@doumi.com
- */
 @Retention(RetentionPolicy.RUNTIME)
 @Repeatable(Persons.class)
 public @interface Person {

@@ -1,11 +1,5 @@
 package com.example.android;
 
-/**
- * @Description: android相关面试题，链接
- * @Author: huangyonghuang
- * @CreateDate: 2020/3/20 4:40 PM
- * @Email:huangyonghuang@doumi.com
- */
 
 public class Android_inter {
 

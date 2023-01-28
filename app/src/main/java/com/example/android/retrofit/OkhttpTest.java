@@ -2,7 +2,6 @@ package com.example.android.retrofit;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Handler;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -12,16 +11,11 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * @Description: 主要是看源码
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-29 15:30
- * @Email:huangyonghuang@doumi.com
- */
 public class OkhttpTest {
 
 
     private void getRetrofitData() {
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://baidu.com")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -79,9 +73,5 @@ public class OkhttpTest {
 
             }
         });
-
-
     }
-
-
 }

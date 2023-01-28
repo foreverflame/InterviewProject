@@ -6,12 +6,6 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 
-/**
- * @Description:
- * @Author: huangyonghuang
- * @CreateDate: 2020/3/28 2:22 PM
- * @Email:huangyonghuang@doumi.com
- */
 public class MyImageView extends AppCompatImageView {
     public MyImageView(Context context) {
         super(context);
@@ -24,7 +18,6 @@ public class MyImageView extends AppCompatImageView {
     public MyImageView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {

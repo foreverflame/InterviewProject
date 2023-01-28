@@ -1,10 +1,5 @@
 package com.example.android.DesignPattern;
 
-/**
- * @Description: 内部类单例测试
- * @Author: huangyonghuang
- * @CreateDate: 2/24/21 10:27 AM
- */
 public class SingleInstanceTest {
 
     private SingleInstanceTest() {

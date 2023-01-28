@@ -2,213 +2,264 @@ package com.example.kotlin
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.widget.databinding.ActivityMain2Binding
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.*
 
 
 class MainActivity : AppCompatActivity() {
+    private val TAG = "MainActivity"
 
     private val activityMain2Binding: ActivityMain2Binding by inflate()
-
-    val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-        Log.d("exceptionHandler", "${coroutineContext[CoroutineName]} $throwable")
-    }
+    private val testFlowViewModel: TestFlowViewModel by  viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMain2Binding.apply {
             tvCoroutineStart.setOnClickListener {
-                testCoroutineScope4()
+                test1()
+            }
+        }
+    }
+
+
+    private fun test() {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                val flow = flow<String> { }.shareIn(
+                    scope = lifecycleScope,
+                    started = SharingStarted.Lazily,
+                    replay = 1
+                )
+            }
+        }
+    }
+
+
+    fun test1() {
+        val job = lifecycleScope.launch {
+            flow {
+                for (i in 1 until 4) {
+                    delay(100)
+                    emit(i)
+                }
+            }.collect { value ->
+                Log.d("test1", "value:${value}")
             }
         }
 
-        lifecycleScope.launch(exceptionHandler) { }
+        job.cancel()
     }
 
-    init {
-
-        lifecycleScope.launchWhenResumed {
-
+    fun test2() {
+        val job = lifecycleScope.launch {
+            //内部调用的就是的flow{}
+            flowOf(1, 2, 3).collect { value ->
+                Log.d("test1", "value:${value}")
+            }
         }
-        lifecycleScope.launchWhenCreated {
-
-        }
-        lifecycleScope.launchWhenStarted {
-
-        }
+        job.cancel()
     }
 
-
-
-
-    /**
-     * CoroutineStart 协程的启动模式一共有4种 Default、lazy、atomic、undispatched
-     */
-    private fun testCoroutineStart() {
-        val defaultJob = GlobalScope.launch {
-            Log.d("defaultJob", "CoroutineStart.DEFAULT")
+    fun test3() {
+        lifecycleScope.launch {
+            flow {
+                for (i in 1..3) {
+                    Log.d(TAG, "flow :${currentCoroutineContext()}")
+                    delay(100)
+                    emit(i)
+                }
+            }.map {
+                Log.d(TAG, "map:${currentCoroutineContext()}")
+                it
+            }.flowOn(Dispatchers.Default).collect { value ->
+                Log.d(TAG, "collect:${currentCoroutineContext()} value :${value}")
+            }
         }
-        defaultJob.cancel()
-        val lazyJob = GlobalScope.launch(start = CoroutineStart.LAZY) {
-            Log.d("lazyJob", "CoroutineStart.LAZY")
-        }
-        val atomicJob = GlobalScope.launch(start = CoroutineStart.ATOMIC) {
-            Log.d("atomicJob", "CoroutineStart.ATOMIC挂起前")
-            delay(100)
-            Log.d("atomicJob", "CoroutineStart.ATOMIC挂起后")
-        }
-        atomicJob.cancel()
-        val undispatchedJob = GlobalScope.launch(start = CoroutineStart.UNDISPATCHED) {
-            Log.d("undispatchedJob", "CoroutineStart.UNDISPATCHED挂起前")
-            delay(100)
-            Log.d("undispatchedJob", "CoroutineStart.UNDISPATCHED挂起后")
-        }
-        undispatchedJob.cancel()
     }
 
     /**
-     *  协程挂起
+     * 总结：flow 操作符
+     * 过度操作符：onStart onEach onComplete
+     * 末端操作符：single toList toSet collect reduce fold fist 这些都是挂起函数
      */
-//    private fun testUnDispatched(){
-//        GlobalScope.launch(Dispatchers.Main){
-//            val job = launch(Dispatchers.IO) {
-//                Log.d("${Thread.currentThread().name}线程", "-> 挂起前")
-//                delay(100)
-//                Log.d("${Thread.currentThread().name}线程", "-> 挂起后")
-//            }
-//            Log.d("${Thread.currentThread().name}线程", "-> join前")
-//            job.join()
-//            Log.d("${Thread.currentThread().name}线程", "-> join后")
-//        }
-//    }
+
+    fun flowLabel() {
+        lifecycleScope.launch {
+            flow<Int> {
+
+            }.onStart { }
+                .onEach { }
+                .onCompletion { }
+        }
+    }
+
+
+    private fun test5() {
+        lifecycleScope.launch {
+            flow {
+                Log.d("flow", "${currentCoroutineContext()}")
+                emit(1)
+            }.onStart {
+                Log.d("onStart", "${currentCoroutineContext()}")
+            }.onEach {
+                Log.d("onEach", "$it")
+                throw java.lang.NullPointerException("空指针")
+            }
+                .onCompletion { cause ->
+                    Log.d("onCompletion", "$cause")
+                }
+                .collect {
+                    Log.d("collect", "$it")
+                }
+        }
+    }
+
 
     /**
-     * 给子协程设置启动模式
+     * 这种情况只打印 onstart-flow-oneach-oncomplete
      */
-    private fun testUnDispatched() {
-        GlobalScope.launch(Dispatchers.Main) {
-            val job = launch(Dispatchers.IO, start = CoroutineStart.UNDISPATCHED) {
-                Log.d("${Thread.currentThread().name}线程", "-> 挂起前")
+    private fun test6() {
+        lifecycleScope.launch {
+            flow {
+                Log.d("flow", "${currentCoroutineContext()}")
+                emit(1)
+                throw java.lang.NullPointerException("空指针")
+            }.onStart {
+                Log.d("onStart", "${currentCoroutineContext()}")
+            }.onEach {
+                Log.d("onEach", "$it")
+            }.catch { cause ->
+                Log.d("catch", "$cause")
+                emit(2)
+            }
+                .map {
+                    Log.d("map", "$it")
+                    throw  NullPointerException("第二个空指针")
+                    it
+                }
+                .onCompletion { cause ->
+                    Log.d("onCompletion", "$cause")
+                }
+
+                .collect {
+                    Log.d("collect", "$it")
+                }
+        }
+    }
+
+
+    private fun test7() {
+        lifecycleScope.launch {
+            flow {
+                Log.d("flow", "${currentCoroutineContext()}")
+                emit(1)
+                throw java.lang.NullPointerException("空指针")
+            }.onStart {
+                Log.d("onStart", "${currentCoroutineContext()}")
+            }.onEach {
+                Log.d("onEach", "$it")
+            }.catch { cause ->
+                Log.d("catch", "$cause")
+                emit(2)
+            }
+                .map {
+                    Log.d("map", "$it")
+                    throw  NullPointerException("第二个空指针")
+                    it
+                }
+                .catch { cause2 ->
+                    Log.d("catch2", "$cause2")
+                }.onCompletion { cause ->
+                    Log.d("onCompletion", "$cause")
+                }
+                .collect {
+                    Log.d("collect", "$it")
+                }
+        }
+    }
+
+
+    /**
+     *
+     */
+    fun test8() {
+        lifecycleScope.launch {
+            (1 until 4).asFlow().transform {
+                emit(it)
+                emit("transform$it")
+            }.collect {
+                Log.d("transform", "$it")
+            }
+        }
+    }
+
+    fun test9() {
+        val flow = flowOf("one", "two", "three", "four", null, "six")
+        lifecycleScope.launch {
+            flow.mapNotNull {
+                it
+            }.collect {
+                Log.d("mapNotNull", it)
+            }
+        }
+    }
+
+    /**
+     * 结合比较少的
+     */
+    fun test10() {
+        val flow1 = (1..2).asFlow()
+        val flow2 = flowOf("one", "two", "three")
+        lifecycleScope.launch {
+            flow2.zip(flow1) { value1, value2 ->
+                "$value1:$value2"
+            }.collect {
+                Log.d("collect", it)
+            }
+        }
+    }
+
+    fun test11() {
+        lifecycleScope.launch {
+            (1..3).asFlow().take(2).collect { value ->
+                Log.d("collect", "$value")
+            }
+        }
+    }
+
+    fun channel() {
+        runBlocking {
+            val channel = Channel<Int>()
+            launch {
+                for (x in 1..3) {
+                    channel.send(x)
+                }
+            }
+            launch {
                 delay(100)
-                Log.d("${Thread.currentThread().name}线程", "-> 挂起后")
+                channel.send(888)
+                channel.send(999)
             }
-            Log.d("${Thread.currentThread().name}线程", "-> join前")
-            job.join()
-            Log.d("${Thread.currentThread().name}线程", "-> join后")
+            repeat(Int.MAX_VALUE) {
+                println("receive :${channel.receive()}")
+            }
+            println("done")
         }
     }
 
-
-    /**
-     * 协程作用域测试
-     */
-    private fun coroutineScopeTest() {
-        val runBlockJob = runBlocking {
-            Log.d("runBlocking", "启动一个协程")
-        }
-        Log.d("runBlockJob", "$runBlockJob")
-
-        val launchJob = GlobalScope.launch {
-            Log.d("launch", "启动一个协程")
-        }
-        Log.d("launchJob", "$launchJob")
-        val asyncJob = GlobalScope.async {
-            Log.d("async", "启动一个协程")
-        }
-        Log.d("asyncJob", "$asyncJob")
-    }
-
-
-    /**
-     * 协同作用域
-     */
-    private fun testCoroutineScope2() {
-        val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-            Log.d("exceptionHandler", "${coroutineContext[CoroutineName]} $throwable")
-        }
-        GlobalScope.launch(Dispatchers.Main + CoroutineName("scope1") + exceptionHandler) {
-            Log.d("scope", "--------- 1")
-            launch(CoroutineName("scope2") + exceptionHandler) {
-                Log.d("scope", "--------- 2")
-                throw  NullPointerException("空指针")
-                Log.d("scope", "--------- 3")
-            }
-            val scope3 = launch(CoroutineName("scope3") + exceptionHandler) {
-                Log.d("scope", "--------- 4")
-                delay(2000)
-                Log.d("scope", "--------- 5")
-            }
-            scope3.join()
-            Log.d("scope", "--------- 6")
-        }
-    }
-
-    /**
-     * 主从
-     */
-    private fun testCoroutineScope3() {
-        val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-            Log.d("exceptionHandler", "${coroutineContext[CoroutineName]} $throwable")
-        }
-        GlobalScope.launch(Dispatchers.Main + CoroutineName("scope1") + exceptionHandler) {
-            supervisorScope {
-                Log.d("scope", "--------- 1")
-                launch(CoroutineName("scope2")) {
-                    Log.d("scope", "--------- 2")
-                    throw  NullPointerException("空指针")
-                    Log.d("scope", "--------- 3")
-                    val scope3 = launch(CoroutineName("scope3")) {
-                        Log.d("scope", "--------- 4")
-                        delay(2000)
-                        Log.d("scope", "--------- 5")
-                    }
-                    scope3.join()
-                }
-                val scope4 = launch(CoroutineName("scope4")) {
-                    Log.d("scope", "--------- 6")
-                    delay(2000)
-                    Log.d("scope", "--------- 7")
-                }
-                scope4.join()
-                Log.d("scope", "--------- 8")
-            }
-        }
-    }
-
-
-    /**
-     * 主从作业
-     */
-    private fun testCoroutineScope4() {
-        val exceptionHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
-            Log.d("exceptionHandler", "${coroutineContext[CoroutineName]} $throwable")
-        }
-        val coroutineScope = CoroutineScope(SupervisorJob() + CoroutineName("coroutineScope"))
-        GlobalScope.launch(Dispatchers.Main + CoroutineName("scope1") + exceptionHandler) {
-            with(coroutineScope) {
-                val scope2 = launch(CoroutineName("scope2") + exceptionHandler) {
-                    Log.d("scope", "1--------- ${coroutineContext[CoroutineName]}")
-                    throw  NullPointerException("空指针")
-                }
-                val scope3 = launch(CoroutineName("scope3") + exceptionHandler) {
-                    scope2.join()
-                    Log.d("scope", "2--------- ${coroutineContext[CoroutineName]}")
-                    delay(2000)
-                    Log.d("scope", "3--------- ${coroutineContext[CoroutineName]}")
-                }
-                scope2.join()
-                Log.d("scope", "4--------- ${coroutineContext[CoroutineName]}")
-                coroutineScope.cancel()
-                scope3.join()
-                Log.d("scope", "5--------- ${coroutineContext[CoroutineName]}")
-            }
-            Log.d("scope", "6--------- ${coroutineContext[CoroutineName]}")
-        }
-    }
 
 }
+
+
+
+
 
 
 
