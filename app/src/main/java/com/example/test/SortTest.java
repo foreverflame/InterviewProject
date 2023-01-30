@@ -8,12 +8,15 @@ package com.example.test;
 public class SortTest {
 
     public static void main(String[] args) {
-        int[] array = new int[]{1, 2, 9, 3, 5, 3, 8, 7};
+        int[] array = new int[]{1, 2, 9, 3, 5, 4, 8, 7};
         int low = 0;
         int high = array.length - 1;
-        quickSort(array, low, high);
-        bubbleSort(array);
+//        quickSort(array, low, high);
+//        bubbleSort(array);
         selectSort(array);
+        for (int j : array) {
+            System.out.println(j);
+        }
     }
 
 
