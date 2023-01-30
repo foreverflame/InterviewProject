@@ -11,20 +11,15 @@ public class DataStructure {
         ListNode(E data) {
             this.value = data;
         }
-
         E value;
-
         ListNode<Integer> next;
     }
 
     public static class Node<E> {
         E data;
-
         Node<E> next = null;
-
         Node(E data) {
             this.data = data;
-
         }
     }
 

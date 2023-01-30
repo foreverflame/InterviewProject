@@ -1,4 +1,4 @@
-package com.example.android;
+package com.example;
 
 
 public class Android_inter {

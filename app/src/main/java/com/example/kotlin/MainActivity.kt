@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.widget.databinding.ActivityMain2Binding
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
@@ -28,18 +26,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun test() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                val flow = flow<String> { }.shareIn(
-                    scope = lifecycleScope,
-                    started = SharingStarted.Lazily,
-                    replay = 1
-                )
-            }
-        }
-    }
 
 
     fun test1() {

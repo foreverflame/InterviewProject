@@ -1,13 +1,10 @@
-package com.example.algorithm;
+package com.example.java.thread;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @Description: 多线程测试  https://www.jianshu.com/p/41ab99e6ac2c 多线程打奇偶
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-28 08:32
- * @Email:huangyonghuang@doumi.com
+ * 多线程测试  https://www.jianshu.com/p/41ab99e6ac2c 多线程打奇偶
  */
 public class ThreadAlgorithm {
 

@@ -8,17 +8,6 @@ import java.util.TreeSet;
 
 public class ArrayAlgorithm {
 
-    public static class ListNode {
-        int data;
-        ListNode next;
-
-        ListNode(int data) {
-            this.data = data;
-        }
-
-    }
-
-
     public static void main(String[] args) {
         int[] A = new int[]{1, 2, 3, 0, 0, 0};
         int[] B = new int[]{2, 5, 6};
@@ -98,9 +87,7 @@ public class ArrayAlgorithm {
      * 数组中第k大数,通过treeset的有序
      */
     private static int getSecondNumbers(int[] nums) {
-
         if (nums == null || nums.length == 0) throw new RuntimeException("error");
-
         TreeSet<Integer> set = new TreeSet<>();
         for (Integer elem : nums) {
             set.add(elem);
@@ -108,7 +95,6 @@ public class ArrayAlgorithm {
                 set.remove(set.first());
             }
         }
-
         return set.size() < 2 ? set.last() : set.first();   // set.last() 里面最大的元素
     }
 

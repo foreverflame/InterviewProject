@@ -1,14 +1,9 @@
-package com.example.android;
+package com.example.algorithm;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.TreeSet;
 
-public class Sort_algro {
-
+public class NodeAlgorithm {
 
     public static class ListNode<E> {
         ListNode(E data) {
@@ -31,60 +26,7 @@ public class Sort_algro {
         }
     }
 
-    private void quickSort(int[] array, int low, int high) {
-        int i, j, temp, t;
-        i = low;
-        j = high;
-        temp = array[low];
-        while (i < j) {
-            while (temp <= array[j] && i < j) {
-                j--;
-            }
-            while (temp >= array[i] && i < j) {
-                i++;
-            }
 
-            t = array[i];
-            array[i] = array[j];
-            array[j] = t;
-        }
-
-        //i,j 如果相遇，则和基准值交换位置
-        array[low] = array[j];
-        array[j] = temp;
-
-        quickSort(array, low, j - 1);
-        quickSort(array, j + 1, high);
-    }
-
-
-    private void bubbleSort(int[] array) {
-        int temp;
-        for (int i = 0; i < array.length - 1; i++) {
-            for (int j = 0; j < array.length - i - 1; j++) {
-                if (array[j] > array[j + 1]) {
-                    temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-            }
-        }
-    }
-
-    private void selectSort(int[] array) {
-        int temp, minMindex;
-        for (int i = 0; i < array.length - 1; i++) {
-            minMindex = i;
-            for (int j = minMindex; j < array.length - 1; j++) {
-                if (array[j + 1] < array[minMindex]) {
-                    minMindex = j + 1;
-                }
-            }
-            temp = array[i];
-            array[i] = array[minMindex];
-            array[minMindex] = temp;
-        }
-    }
 
     //递归
     private ListNode<Integer> merge(ListNode<Integer> l1, ListNode<Integer> l2) {
@@ -111,7 +53,7 @@ public class Sort_algro {
 
 
     //迭代合并
-    private ListNode<Integer> mergesimple(ListNode<Integer> l1, ListNode<Integer> l2) {
+    private ListNode<Integer> mergeSimple(ListNode<Integer> l1, ListNode<Integer> l2) {
 
         ListNode<Integer> dummyHead = new ListNode<>(0);
 
@@ -140,7 +82,7 @@ public class Sort_algro {
 
 
     //判断链表是否有环,并且找到环的位置
-    private void detecyRecycle(ListNode<Integer> head) {
+    private void detectRecycle(ListNode<Integer> head) {
 
         if (head == null) {
             return;
@@ -167,8 +109,6 @@ public class Sort_algro {
         } else {
             return;
         }
-
-
     }
 
 
@@ -241,12 +181,10 @@ public class Sort_algro {
                 int newlenth = 10;
                 stack = Arrays.copyOf(stack, newlenth);
             }
-
         }
-
     }
 
-    public static class Myqueue<E> {
+    public static class MyQueue<E> {
 
         Node<E> head;
         Node<E> tail;
@@ -267,112 +205,14 @@ public class Sort_algro {
             }
         }
 
-
         private E pop() {
             if (isEmpty()) {
                 return null;
             }
-
             E data = head.data;
             head = head.next;
             return data;
-
         }
     }
-
-
-    //找出一个数组中和为某个数的索引
-    private static int[] getSumIndex(int[] array, int target) {
-        int[] index = new int[2];
-
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
-
-        for (int i = 0; i < array.length; i++) {
-            if (hashMap.containsKey(array[i])) {
-                index[0] = i;
-                index[1] = hashMap.get(array[i]);
-                return index;
-            }
-            hashMap.put(target - array[i], i);
-
-        }
-        return index;
-    }
-
-    //数组的所有子集合
-    private static List<List<Integer>> subSet(int[] nums) {
-        List<List<Integer>> res = new ArrayList<>();
-        ArrayList<Integer> integers = new ArrayList<>();
-        res.add(integers);
-
-        for (int i = 0; i < nums.length; i++) {
-            int size = res.size();
-            for (int j = 0; j < size; j++) {
-                ArrayList<Integer> tmp = new ArrayList<>(res.get(j));
-                tmp.add(nums[i]);
-                res.add(tmp);
-            }
-        }
-        return res;
-    }
-
-    private static void merge(int[] A, int m, int[] B, int n) {
-        while (m > 0 && n > 0) {
-            A[m + n - 1] = A[m - 1] > B[n - 1] ? A[m-- - 1] : B[n-- - 1];
-        }
-
-        while (n > 0) {
-            A[n - 1] = B[n - 1];
-            n--;
-        }
-    }
-
-    private static int kMax(int[] nums) {
-        if (nums == null || nums.length == 0) throw new RuntimeException("error");
-        TreeSet<Integer> set = new TreeSet<>();
-
-        for (int i = 0; i < nums.length - 1; i++) {
-            set.add(nums[i]);
-            if (set.size() > 2) {
-                set.remove(set.first());
-            }
-        }
-        return set.size() < 2 ? set.last() : set.first();
-    }
-
-    //求数组中的众数
-    private static int majorNumbers(int[] nums) {
-        int x = 0, votes = 0;
-
-        for (Integer num : nums) {
-            if (votes == 0) {
-                x = num;
-            }
-            votes += num == x ? 1 : -1;
-
-        }
-        return x;
-    }
-
-
-    //删除数组中重复元素
-    private static int deleteDuplicate(int[] nums) {
-        if (nums == null || nums.length == 0) {
-           return 0;
-        }
-
-        int p = 0; //慢指针
-        int q = 1; //快指针
-        while (q < nums.length) {
-            if (nums[p] != nums[q]) {
-                nums[p + 1] = nums[q];
-                p++;
-            }
-            q++;
-        }
-
-        return p + 1;
-    }
-
 
 }

@@ -1,11 +1,6 @@
 package com.example.android.DesignPattern;
 
-/**
- * @Description:
- * @Author: huangyonghuang
- * @CreateDate: 2019-12-29 19:41
- * @Email:huangyonghuang@doumi.com
- */
+
 public class PersonBuilder {
 
 

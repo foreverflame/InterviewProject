@@ -5,7 +5,6 @@ public class AbstractFactory {
 
     public static void main(String[] args) {
 
-
     }
 
     public abstract class NokiaPhone {
@@ -137,14 +136,5 @@ public class AbstractFactory {
             return new Battery11();
         }
     }
-
-
-
-
-
-
-
-
-
 
 }

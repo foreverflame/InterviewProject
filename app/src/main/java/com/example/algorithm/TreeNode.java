@@ -16,7 +16,6 @@ public class TreeNode {
         binaryTree.initTree(preOrder, inOrder);
         System.out.println("二叉树的后序遍历");
         binaryTree.postOrder();
-
     }
 
 
@@ -187,7 +186,7 @@ public class TreeNode {
 
 
         /**
-         * 已知先序遍历，中序遍历，球后序遍历
+         * 已知先序遍历，中序遍历，求后序遍历
          */
         private void initTree(int[] pre, int[] in) {
             this.root = initLocalTree(pre, 0, pre.length - 1, in, 0, in.length - 1);
