@@ -11,26 +11,16 @@ public class NodeAlgorithm {
         }
 
         E value;
-
         ListNode<E> next;
     }
-
-    public static class Node<E> {
-        E data;
-
-        Node<E> next = null;
-
-        Node(E data) {
-            this.data = data;
-
-        }
-    }
-
 
 
     //递归
     private ListNode<Integer> merge(ListNode<Integer> l1, ListNode<Integer> l2) {
 
+        if (l1 == null && l2 == null) {
+            return null;
+        }
         if (l1 == null) {
             return l2;
         }
@@ -186,15 +176,15 @@ public class NodeAlgorithm {
 
     public static class MyQueue<E> {
 
-        Node<E> head;
-        Node<E> tail;
+        ListNode<E> head;
+        ListNode<E> tail;
 
         private boolean isEmpty() {
             return head == tail;
         }
 
         private void put(E data) {
-            Node<E> newHead = new Node<>(data);
+            ListNode<E> newHead = new ListNode<>(data);
 
             if (head == null && tail == null) {
 
@@ -209,7 +199,7 @@ public class NodeAlgorithm {
             if (isEmpty()) {
                 return null;
             }
-            E data = head.data;
+            E data = head.value;
             head = head.next;
             return data;
         }
