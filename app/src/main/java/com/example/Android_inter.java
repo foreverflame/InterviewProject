@@ -38,6 +38,7 @@ public class Android_inter {
     /**
      * double check
      * https://www.jianshu.com/p/7b901261fc2d
+     * https://blog.csdn.net/alpha_xia/article/details/121589396
      */
     public static class SingleInstance {
 
@@ -282,6 +283,11 @@ public class Android_inter {
      * https://blog.csdn.net/wljliujuan/article/details/79614019#%E4%B8%80%E4%BB%80%E4%B9%88%E6%98%AF%E6%AD%BB%E9%94%81
      */
 
+
+    /**
+     * synchronize 关键字 锁对象
+     * https://blog.csdn.net/guyue35/article/details/85052537
+     */
 
 
     /**

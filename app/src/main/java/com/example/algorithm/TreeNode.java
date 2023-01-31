@@ -6,6 +6,10 @@ import java.util.Queue;
 import java.util.Stack;
 
 
+/**
+ * 二叉树
+ * https://blog.csdn.net/My_Jobs/article/details/43451187
+ */
 public class TreeNode {
 
 
@@ -35,111 +39,86 @@ public class TreeNode {
 
     //构建二叉树
     public static class BinaryTree {
-
         Node root;
-
         BinaryTree() {
             root = null;
         }
-
         //二叉树中插入数据
         private void insert(int data) {
             Node newNode = new Node(data);
-
             if (root == null) {
                 root = newNode;
             } else {
                 Node current = root;
                 Node parent;
-
                 while (true) {
                     //用parent 节点存储current
                     parent = current;
-
                     if (data < current.data) {
-
                         current = current.left;
-
                         if (current == null) {
-
                             parent.left = newNode;
                             return;
                         }
-
-
                     } else {
-
                         current = current.right;
-
                         if (current == null) {
                             parent.right = newNode;
                             return;
                         }
-
                     }
                 }
-
             }
         }
-
 
         //构建二叉树
         private void buildTree(int[] data) {
-
             for (int i = 0; i < data.length; i++) {
                 insert(data[i]);
             }
-
         }
 
-        //二叉树的先序遍历
-        private void preOrder(Node loacalNode) {
-
-            if (loacalNode != null) {
-                System.out.println(loacalNode.data);
-                preOrder(loacalNode.left);
-                preOrder(loacalNode.right);
+        //二叉树的先序遍历 根-左-右
+        private void preOrder(Node localNode) {
+            if (localNode != null) {
+                System.out.println(localNode.data);
+                preOrder(localNode.left);
+                preOrder(localNode.right);
             }
         }
 
-
-        //二叉树的中序遍历
-        private void centerOrder(Node loacalNode) {
-
-            if (loacalNode != null) {
-                centerOrder(loacalNode.left);
-                System.out.println(loacalNode.data);
-                centerOrder(loacalNode.right);
+        //二叉树的中序遍历 左-根-右
+        private void centerOrder(Node localNode) {
+            if (localNode != null) {
+                centerOrder(localNode.left);
+                System.out.println(localNode.data);
+                centerOrder(localNode.right);
             }
         }
 
-        //二叉树的后序遍历
-        private void postOrder(Node loacalNode) {
-
-            if (loacalNode != null) {
-                postOrder(loacalNode.left);
-                postOrder(loacalNode.right);
-                System.out.println(loacalNode.data + "");
+        //二叉树的后序遍历 左-右-根
+        private void postOrder(Node localNode) {
+            if (localNode != null) {
+                postOrder(localNode.left);
+                postOrder(localNode.right);
+                System.out.println(localNode.data + "");
             }
         }
-
 
         private void postOrder() {
             this.postOrder(this.root);
         }
 
-
         /**
          * 深度优先 利用栈
+         * 其实深度遍历就是上面的前序、中序和后序。但是为了保证与广度优先遍历相照应，也写在这。代码也比较好理解，其实就是前序遍历
          */
         private void depthTraversal() {
             if (root == null) {
                 System.out.println("root is empty");
             }
-
             Stack<Node> stack = new Stack<>();
             stack.push(root);
-
             while (!stack.isEmpty()) {
                 Node pop = stack.pop();
                 if (pop.left != null) {
@@ -149,7 +128,6 @@ public class TreeNode {
                     stack.push(pop.right);
                 }
             }
-
             System.out.println("/n");
         }
 
@@ -157,33 +135,24 @@ public class TreeNode {
         /**
          * 广度优先 利用队列 （就是我们经常说的层次遍历）
          */
-
         private void levelTraversal() {
-
             if (root == null) {
                 System.out.println("root is empty");
             }
-
             ArrayDeque<Node> queue = new ArrayDeque<>();
-
             queue.add(root);
             while (!queue.isEmpty()) {
-
                 //队列
                 Node node = queue.remove();
-
                 if (node.left != null) {
                     queue.add(node.left);
                 }
-
                 if (node.right != null) {
                     queue.add(node.right);
                 }
             }
-
             System.out.println("/n");
         }
-
 
         /**
          * 已知先序遍历，中序遍历，求后序遍历
@@ -222,7 +191,6 @@ public class TreeNode {
             }
             return -1;
         }
-
     }
 
 
