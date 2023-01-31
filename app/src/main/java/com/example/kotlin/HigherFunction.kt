@@ -11,13 +11,8 @@ class HigherFunction {
         check(10) { 10 }
     }
 
-
     fun check(num: Int, add: () -> Int): Int {
         return num + add()
     }
-
-
-
-
 
 }

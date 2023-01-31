@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.algorithm;
 
 /**
  * @description: 双重锁单例、静态内部类单例

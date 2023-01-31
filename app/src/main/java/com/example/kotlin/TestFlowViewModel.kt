@@ -19,10 +19,8 @@ class TestFlowViewModel : ViewModel() {
 
     }
 
-
     override fun onCleared() {
         super.onCleared()
     }
-
 
 }

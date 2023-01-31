@@ -1,7 +1,7 @@
 package com.example;
 
 
-public class Android_inter {
+public class AndroidLink {
 
 
     /**
@@ -9,7 +9,7 @@ public class Android_inter {
      * mvvm 查看官方文档
      * https://www.jianshu.com/p/c0988e7f31fd
      */
-    //=================================================
+
 
     /**
      * tcp 和udp ，http和https 区别，网络编程模块
@@ -17,16 +17,12 @@ public class Android_inter {
      */
 
 
-    //=================================================
-
     /**
      * 屏幕适配问题，今日头条的屏幕适配方案，真正理解该方案的原理
      * https://www.jianshu.com/p/55e0fca23b4f
      * https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA
      * 如果每个 View 的 dp 值是固定不变的，那我们只要保证每个设备的屏幕总 dp 宽度不变，就能保证每个 View 在所有分辨率的屏幕上与屏幕的比例都保持不变，从而完成等*    * 比例适配，并且这个屏幕总 dp 宽度如果还能保证和设计图的宽度一致的话，那我们在布局时就可以直接按照设计图上的尺寸填写 dp 值
      */
-
-    //=================================================
 
 
     /**
@@ -40,53 +36,6 @@ public class Android_inter {
      * https://www.jianshu.com/p/7b901261fc2d
      * https://blog.csdn.net/alpha_xia/article/details/121589396
      */
-    public static class SingleInstance {
-
-        //volatile 禁止指令重排序
-        private volatile static SingleInstance instance = null;
-
-        private SingleInstance() {
-        }
-
-        public static SingleInstance getInstance() {
-            //当 instance 为 null 时，两个线程可以并发地进入 if 语句内部
-            if (instance == null) {
-                synchronized (SingleInstance.class) {
-                    if (instance == null) {
-                        instance = new SingleInstance();
-                    }
-                }
-            }
-            return instance;
-        }
-    }
-
-
-    /**
-     * 建造者模式
-     * 将一个复杂对象的构建和他的表示分开
-     */
-    public static class Company {
-        int age;
-
-        Company(Builder builder) {
-            this.age = builder.age;
-        }
-
-        public static class Builder {
-
-            int age;
-
-            public Builder setAge(int age) {
-                this.age = age;
-                return this;
-            }
-
-            private Company build() {
-                return new Company(this);
-            }
-        }
-    }
 
 
     /**
@@ -223,7 +172,6 @@ public class Android_inter {
      */
 
 
-
     /**
      * android 属性动画，差值器，估值器
      * https://www.jianshu.com/p/2412d00a0ce4
@@ -257,7 +205,6 @@ public class Android_inter {
      * https://me.csdn.net/sinyu890807
      * https://blog.csdn.net/qq_15827013/article/details/97893860  glide 大致流程
      */
-
 
 
     /**
@@ -302,8 +249,6 @@ public class Android_inter {
      * https://www.cnblogs.com/lidabo/p/9018490.html
      * https://blog.csdn.net/abc0432136/article/details/101264211 首帧加载速率问题
      */
-
-
 
 
 }

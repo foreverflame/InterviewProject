@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.algorithm;
 
 /**
  * @description: 快速排序、冒泡排序、选择排序

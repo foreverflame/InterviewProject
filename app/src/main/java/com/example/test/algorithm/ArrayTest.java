@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.algorithm;
 
 /**
  * @description: 数组相关测试

@@ -1,4 +1,4 @@
-package com.example.test;
+package com.example.test.algorithm;
 
 /**
  * @description: 二叉树

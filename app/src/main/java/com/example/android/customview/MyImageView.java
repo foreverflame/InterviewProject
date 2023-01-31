@@ -1,4 +1,4 @@
-package com.example.widget;
+package com.example.android.customview;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,6 +6,9 @@ import android.util.AttributeSet;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 
+/**
+ * 自定义矩形头像
+ */
 public class MyImageView extends AppCompatImageView {
     public MyImageView(Context context) {
         super(context);
