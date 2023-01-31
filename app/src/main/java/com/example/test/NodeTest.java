@@ -1,5 +1,8 @@
 package com.example.test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @description: 链表相关操作
  * @author: huangyonghuang
@@ -66,4 +69,89 @@ public class NodeTest {
         }
         return dummyHead.next;
     }
+
+
+    /**
+     * 反转链表
+     */
+    public ListNode<Integer> reverse(ListNode<Integer> head) {
+        ListNode<Integer> prev = null;
+        ListNode<Integer> curr = head;
+        while (curr != null) {
+            ListNode<Integer> nextTmp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTmp;
+        }
+        return prev;
+    }
+
+    /**
+     * 用两个队列实现栈
+     */
+    public class MyStack {
+        Queue<Integer> queue1;
+        Queue<Integer> queue2;
+
+        MyStack() {
+            queue1 = new LinkedList<>();
+            queue2 = new LinkedList<>();
+        }
+
+        public void push(int x) {
+            queue2.offer(x);
+            while (!queue1.isEmpty()) {
+                queue2.offer(queue1.poll());
+            }
+            Queue<Integer> temp = queue1;
+            queue1 = queue2;
+            queue2 = temp;
+        }
+
+        public int pop() {
+            return queue1.poll();
+        }
+
+        public int top() {
+            return queue1.peek();
+        }
+
+        public boolean empty() {
+            return queue1.isEmpty();
+        }
+    }
+
+
+    /**
+     * 用两个链表实现队列
+     */
+    public class MyQueue<E> {
+        ListNode<E> head;
+        ListNode<E> tail;
+
+        public boolean isEmpty() {
+            return head == tail;
+        }
+
+        public void put(E data) {
+            ListNode<E> newHead = new ListNode<>(data);
+            if (head == null && tail == null) {
+                head = tail = newHead;
+            } else {
+                tail.next = newHead;
+                tail = newHead;
+            }
+        }
+
+        public E pop() {
+            if (isEmpty()) {
+                return null;
+            }
+            E data = head.value;
+            head = head.next;
+            return data;
+        }
+    }
+
+
 }
