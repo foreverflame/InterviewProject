@@ -55,7 +55,21 @@ public class SourceCodeLink {
      */
 
 
+    /**
+     * https数据传输过程
+     * https://cloud.tencent.com/developer/article/1601995
+     */
 
 
+    /**
+     * activity 的生命周期
+     * https://blog.csdn.net/qq_29092191/article/details/80901610
+     */
+
+
+    /**
+     * activyt 4种启动模式
+     * https://blog.csdn.net/ElisonX/article/details/80397519
+     */
 
 }
