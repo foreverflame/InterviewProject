@@ -42,4 +42,20 @@ public class SourceCodeLink {
      */
 
 
+    /**
+     * java 垃圾回收机制
+     * https://baijiahao.baidu.com/s?id=1636852721632353675
+     */
+
+
+    /**
+     *  synchonized锁可重入 https://www.cnblogs.com/incognitor/p/9894604.html
+     *  volatile 和synchronized 区别  https://blog.csdn.net/suifeng3051/article/details/52611233
+     *  ReentrantLock 和 synchronized 比较 https://www.cnblogs.com/aspirant/p/8657681.html
+     */
+
+
+
+
+
 }

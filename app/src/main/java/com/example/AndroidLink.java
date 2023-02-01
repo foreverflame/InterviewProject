@@ -86,11 +86,6 @@ public class AndroidLink {
      * https://www.jianshu.com/p/af2993526daf
      */
 
-    /**
-     * jvm 垃圾回收机制
-     * https://blog.csdn.net/yubujian_l/article/details/80804708
-     */
-
 
     /**
      * linkhashmap lrucache linkhashmap 源码

@@ -2,13 +2,11 @@ package com.example
 
 import android.os.Bundle
 import android.util.Log
-import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.kotlin.TestFlowViewModel
 import com.example.kotlin.inflate
-import com.example.widget.R
 import com.example.widget.databinding.ActivityMain2Binding
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
@@ -23,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.overlay_image_ad_layout)
         activityMain2Binding.apply {
             tvCoroutineStart.setOnClickListener {
                 test1()
