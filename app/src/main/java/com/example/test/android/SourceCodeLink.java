@@ -72,4 +72,23 @@ public class SourceCodeLink {
      * https://blog.csdn.net/ElisonX/article/details/80397519
      */
 
+
+    /**
+     * https://zhuanlan.zhihu.com/p/269214344
+     * 类加载双亲委托模式
+     */
+
+
+    /**
+     * okttp 源码
+     * https://www.jianshu.com/p/37e26f4ea57b
+     */
+
+
+    /** leakcanary 源码
+     * https://www.jianshu.com/p/70de36ea8b31
+     */
+
+
+
 }

@@ -53,7 +53,6 @@ public class AndroidLink {
      * retrofit
      * https://www.jianshu.com/p/0c055ad46b6c
      * https://www.jianshu.com/p/45cb536be2f4
-     *
      */
 
     /**
@@ -176,17 +175,6 @@ public class AndroidLink {
 
 
     /**
-     * 自定义控件
-     *
-     */
-
-
-    /**
-     * jni ndk 开发
-     *
-     */
-
-    /**
      * 性能优化 leakcanary,profiler
      * https://blog.csdn.net/Leo_Liang_jie/article/details/93871361
      * https://www.jianshu.com/p/3e8f7dbb0dc7 webview内存泄漏原因
@@ -197,7 +185,6 @@ public class AndroidLink {
     /**
      * 图片相关 glide 源码,retrofit源码，okhttp源码，leakcanary，blockcanary,rxjava
      * https://blog.csdn.net/guolin_blog/article/details/53939176/  glide 源码解析
-     * https://me.csdn.net/sinyu890807
      * https://blog.csdn.net/qq_15827013/article/details/97893860  glide 大致流程
      */
 
