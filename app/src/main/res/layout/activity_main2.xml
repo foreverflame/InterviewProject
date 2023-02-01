@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.kotlin.MainActivity">
+    tools:context="com.example.MainActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_coroutine_start"

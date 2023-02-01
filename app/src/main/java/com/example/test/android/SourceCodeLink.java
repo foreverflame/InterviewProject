@@ -18,5 +18,24 @@ public class SourceCodeLink {
      * https://www.jianshu.com/p/dde9b12343c1
      */
 
+    /**
+     * android 事件分发机制
+     * https://www.jianshu.com/p/38015afcdb58/
+     */
+
+
+    /**
+     * view 的绘制流程
+     * https://blog.csdn.net/sinat_27154507/article/details/79748010
+     */
+
+
+    /**
+     * 自定义空间
+     * https://www.jianshu.com/p/146e5cec4863
+     */
+
+
+
 
 }
