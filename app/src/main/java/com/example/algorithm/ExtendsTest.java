@@ -4,6 +4,7 @@ public class ExtendsTest {
 
     public static void main(String[] args) {
         Son son = new Son();
+        son.speak();
     }
 
     public static class Father {
@@ -41,6 +42,7 @@ public class ExtendsTest {
 
         @Override
         public void speak() {
+            super.speak();
             System.out.println("子类一般方法");
         }
 

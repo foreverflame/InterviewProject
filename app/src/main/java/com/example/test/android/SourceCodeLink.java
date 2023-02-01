@@ -31,11 +31,15 @@ public class SourceCodeLink {
 
 
     /**
-     * 自定义空间
+     * 自定义控件
      * https://www.jianshu.com/p/146e5cec4863
      */
 
 
+    /**
+     * java 内存模型
+     * https://segmentfault.com/a/1190000039960709
+     */
 
 
 }
