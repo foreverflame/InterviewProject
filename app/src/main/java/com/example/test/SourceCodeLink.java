@@ -1,4 +1,4 @@
-package com.example.test.android;
+package com.example.test;
 
 /**
  * @description:
@@ -92,6 +92,13 @@ public class SourceCodeLink {
 
     /** lrucache
      * https://zhuanlan.zhihu.com/p/161269766
+     */
+
+
+    /**
+     * intentService
+     * 由于service不能做耗时操作
+     * https://www.jianshu.com/p/5eaa129432bf
      */
 
 
