@@ -10,7 +10,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Person {
 
     //注解只有属性，没有方法，显示形式和方法类似
-    String role();
+    String role() default "person";
 
 
 }

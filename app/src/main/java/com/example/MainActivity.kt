@@ -1,6 +1,7 @@
 package com.example
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -17,7 +18,7 @@ class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
 
     private val activityMain2Binding: ActivityMain2Binding by inflate()
-    private val testFlowViewModel: TestFlowViewModel by  viewModels()
+    private val testFlowViewModel: TestFlowViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        Log.e(TAG, "onSaveInstanceState")
+    }
+
+    override fun onRestoreInstanceState(
+        savedInstanceState: Bundle?,
+        persistentState: PersistableBundle?
+    ) {
+        super.onRestoreInstanceState(savedInstanceState, persistentState)
+        Log.e(TAG, "onRestoreInstanceState")
+    }
 
 
     fun test1() {
@@ -129,7 +143,7 @@ class MainActivity : AppCompatActivity() {
             }
                 .map {
                     Log.d("map", "$it")
-                    throw  NullPointerException("第二个空指针")
+                    throw NullPointerException("第二个空指针")
                     it
                 }
                 .onCompletion { cause ->
@@ -159,7 +173,7 @@ class MainActivity : AppCompatActivity() {
             }
                 .map {
                     Log.d("map", "$it")
-                    throw  NullPointerException("第二个空指针")
+                    throw NullPointerException("第二个空指针")
                     it
                 }
                 .catch { cause2 ->

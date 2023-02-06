@@ -68,7 +68,7 @@ public class SourceCodeLink {
 
 
     /**
-     * activyt 4种启动模式
+     * activity 4种启动模式
      * https://blog.csdn.net/ElisonX/article/details/80397519
      */
 
@@ -80,7 +80,7 @@ public class SourceCodeLink {
 
 
     /**
-     * okttp 源码
+     * okhttp 源码
      * https://www.jianshu.com/p/37e26f4ea57b
      */
 
@@ -101,5 +101,15 @@ public class SourceCodeLink {
      * https://www.jianshu.com/p/5eaa129432bf
      */
 
+    /**
+     *  app 启动流程
+     *  https://juejin.cn/post/6924198995313033224
+     */
+
+
+    /**
+     * binder
+     *
+     */
 
 }
