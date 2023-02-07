@@ -1,4 +1,4 @@
-package com.example.test.design;
+package com.example.test.design.builder;
 
 /**
  * @description: builder模式
