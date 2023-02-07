@@ -17,12 +17,12 @@ public class ChainPatternDemo {
    public static void main(String[] args) {
       AbstractLogger loggerChain = getChainOfLoggers();
  
-      loggerChain.logMessage(AbstractLogger.INFO, "This is an information.");
- 
-      loggerChain.logMessage(AbstractLogger.DEBUG, 
-         "This is a debug level information.");
- 
-      loggerChain.logMessage(AbstractLogger.ERROR, 
+//      loggerChain.logMessage(AbstractLogger.INFO, "This is an information.");
+//
+//      loggerChain.logMessage(AbstractLogger.DEBUG,
+//         "This is a debug level information.");
+
+      loggerChain.logMessage(AbstractLogger.ERROR,
          "This is an error information.");
    }
 }
