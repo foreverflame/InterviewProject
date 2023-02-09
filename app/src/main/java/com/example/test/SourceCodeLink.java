@@ -79,12 +79,6 @@ public class SourceCodeLink {
      */
 
 
-    /**
-     * okhttp 源码
-     * https://www.jianshu.com/p/37e26f4ea57b
-     */
-
-
     /** leakcanary 源码
      * https://www.jianshu.com/p/70de36ea8b31
      */
@@ -107,9 +101,23 @@ public class SourceCodeLink {
      */
 
 
-    /**
-     * binder
-     *
+
+    /** glide 面试
+     * https://blog.csdn.net/songzi1228/article/details/84426165
+     * https://juejin.cn/post/6970683481127043085#heading-6juejin.cn
+     *  读取顺序：lruCache->weakReference->磁盘缓存->网络
+     *  写入顺序：weakReference->lruCache->磁盘
      */
+
+
+    /** retrofit 面试
+     * https://juejin.cn/post/6941585326675034143
+     */
+
+    /** okhttp 面试
+     * https://juejin.cn/post/6844904087788453896
+     * https://www.jianshu.com/p/37e26f4ea57b
+     */
+
 
 }
