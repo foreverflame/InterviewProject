@@ -1,4 +1,4 @@
-package com.example.test.algorithm;
+package com.example.test.thread;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -32,7 +32,6 @@ public class PrintABCUsingLock {
 
     public static void main(String[] args) {
         PrintABCUsingLock printABCUsingLock = new PrintABCUsingLock(10);
-
         new Thread(() -> {
             printABCUsingLock.printLetter("A", 0);
         }).start();
@@ -43,6 +42,4 @@ public class PrintABCUsingLock {
             printABCUsingLock.printLetter("C", 2);
         }).start();
     }
-
-
 }
