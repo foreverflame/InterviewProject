@@ -15,6 +15,8 @@ public class SourceCodeLink {
 
     /**
      * hashmap 源码
+     * key的hash相等，并且equals,==
+     * 则替换value，返回老的value。否则hash冲突用拉链的方式插入到链表的头部
      * https://www.jianshu.com/p/dde9b12343c1
      */
 
