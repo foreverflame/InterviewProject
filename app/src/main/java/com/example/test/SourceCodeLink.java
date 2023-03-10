@@ -8,6 +8,42 @@ package com.example.test;
 public class SourceCodeLink {
 
     /**
+     * binder
+     * https://weishu.me/2016/01/12/binder-index-for-newer/
+     */
+
+    /**
+     * activity manager service
+     */
+
+    /**
+     * window manager service
+     */
+
+
+    /**
+     * 插件化
+     */
+
+    /**
+     * hook
+     */
+
+    /**
+     * 组件化
+     */
+
+    /**
+     * 类加载机制
+     */
+
+    /**
+     * 设计模式
+     * 装饰、工厂、策略
+     */
+
+
+    /**
      * handler 源码
      * https://www.jianshu.com/p/b4d745c7ff7a
      */
@@ -101,7 +137,6 @@ public class SourceCodeLink {
      *  app 启动流程
      *  https://juejin.cn/post/6924198995313033224
      */
-
 
 
     /** glide 面试
