@@ -186,12 +186,7 @@ public class ArrayAlgorithm {
             } else if (nums[mid] > target) {
                 right = mid - 1;//注意
             }
-
         }
         return -1;
-
-
     }
-
-
 }
