@@ -7,10 +7,17 @@ package com.example.test.algorithm;
  */
 public class ArrayTest {
 
+    public static void main(String[] args) {
+        int[] array = new int[]{1, 2, 5, 8, 9, 12, 30, 99};
+        int key = 30, low = 0, high = array.length - 1;
+        int findKeyIndex = binarySearch(array, key, low, high);
+        System.out.println("key index:" + findKeyIndex);
+    }
+
     /**
      * 有序数组二分查找,返回要找的值的索引
      */
-    public int binarySearch(int[] array, int key, int low, int high) {
+    public static int binarySearch(int[] array, int key, int low, int high) {
         if (key < array[low] || key > array[high] || low > high) {
             return -1;
         }
@@ -23,6 +30,4 @@ public class ArrayTest {
             return mid;
         }
     }
-
-
 }
