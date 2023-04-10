@@ -8,18 +8,17 @@ import java.util.Queue;
 public class NodeAlgorithm {
 
     public static class ListNode<E> {
+        E value;
+        ListNode<E> next;
+
         ListNode(E data) {
             this.value = data;
         }
-
-        E value;
-        ListNode<E> next;
     }
 
 
     //递归
     private ListNode<Integer> merge(ListNode<Integer> l1, ListNode<Integer> l2) {
-
         if (l1 == null && l2 == null) {
             return null;
         }
@@ -29,9 +28,7 @@ public class NodeAlgorithm {
         if (l2 == null) {
             return l1;
         }
-
         ListNode<Integer> head;
-
         if (l1.value < l2.value) {
             head = l1;
             head.next = merge(l1.next, l2);
@@ -39,16 +36,13 @@ public class NodeAlgorithm {
             head = l2;
             head.next = merge(l1, l2.next);
         }
-
         return head;
     }
 
 
     //迭代合并
     private ListNode<Integer> mergeSimple(ListNode<Integer> l1, ListNode<Integer> l2) {
-
         ListNode<Integer> dummyHead = new ListNode<>(0);
-
         ListNode<Integer> curr = dummyHead;
         while (l1 != null && l2 != null) {
             if (l1.value < l2.value) {
@@ -61,23 +55,20 @@ public class NodeAlgorithm {
                 l2 = l2.next;
             }
         }
-
         //如果一条为null，则链接到另外一条
         if (l1 == null) {
             curr.next = l2;
         } else {
             curr.next = l1;
         }
-
         return dummyHead.next;
     }
 
 
-    //判断链表是否有环,并且找到环的位置
-    private void detectRecycle(ListNode<Integer> head) {
-
+    //判断链表是否有环,并且返回环的入口节点
+    private ListNode<Integer> detectRecycle(ListNode<Integer> head) {
         if (head == null) {
-            return;
+            return null;
         }
         ListNode<Integer> slow = head;
         ListNode<Integer> fast = head;
@@ -91,15 +82,15 @@ public class NodeAlgorithm {
                 break;
             }
         }
-
         if (hasRecycle) {
             ListNode<Integer> entryNode = head;
             while (entryNode != slow) {
                 entryNode = entryNode.next;
                 slow = slow.next;
             }
+            return entryNode;
         } else {
-            return;
+            return null;
         }
     }
 
@@ -113,21 +104,20 @@ public class NodeAlgorithm {
             prev = curr;
             curr = nextTemp;
         }
-
         return prev;
     }
 
 
-    private ListNode<Integer> reverse(ListNode<Integer> head) {
-        if (head == null || head.next == null) {
-            return head;
+    private ListNode<Integer> reverseNode(ListNode<Integer> head) {
+        ListNode<Integer> prev = null;
+        ListNode<Integer> curr = head;
+        while (curr != null) {
+            ListNode<Integer> nextTemp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = nextTemp;
         }
-
-        ListNode<Integer> p = reverse(head.next);
-        head.next.next = head;
-        head.next = null;
-
-        return p;
+        return prev;
     }
 
 
@@ -174,6 +164,22 @@ public class NodeAlgorithm {
                 stack = Arrays.copyOf(stack, newlenth);
             }
         }
+    }
+
+
+    /**
+     * 链表反转
+     */
+    private ListNode<Integer> reverse(ListNode<Integer> head) {
+        ListNode<Integer> pre = null;
+        ListNode<Integer> curr = head;
+        while (curr != null) {
+            ListNode<Integer> nextTemp = head.next;
+            curr.next = pre;
+            pre = curr;
+            curr = nextTemp;
+        }
+        return pre;
     }
 
 
