@@ -24,14 +24,13 @@ public class ArrayAlgorithm {
 //            }
 //        }
 
-        int[] sumIndex = getSumIndex(nums, 6);
-//
-        for (Integer integer : sumIndex) {
-            System.out.println(integer);
-        }
+//        int[] sumIndex = getSumIndex(nums, 6);
+//        for (Integer integer : sumIndex) {
+//            System.out.println(integer);
+//        }
 
-//        int secondNumbers = getSecondNumbers(nums);
-//        System.out.println(secondNumbers);
+        int secondNumbers = getSecondNumbers(nums);
+        System.out.println(secondNumbers);
 
 //        merge(A, 3, B, 3);
 //        for (int i = 0; i < A.length; i++) {
@@ -64,13 +63,11 @@ public class ArrayAlgorithm {
 
     /**
      * 一个数组中和为某个数的索引值
+     * hashmap 中key存数，value存索引
      */
     private static int[] getSumIndex(int[] array, int target) {
-        //数组存储索引
         int[] index = new int[2];
-
         HashMap<Integer, Integer> hashMap = new HashMap<>();
-
         for (int i = 0; i < array.length; i++) {
             if (hashMap.containsKey(array[i])) {
                 index[0] = i;
@@ -79,7 +76,6 @@ public class ArrayAlgorithm {
             }
             hashMap.put(target - array[i], i);
         }
-
         return index;
     }
 
