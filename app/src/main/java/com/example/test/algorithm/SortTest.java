@@ -13,7 +13,7 @@ public class SortTest {
         int high = array.length - 1;
 //        quickSort(array, low, high);
 //        bubbleSort(array);
-        selectSort(array);
+//        selectSort(array);
         for (int j : array) {
             System.out.println(j);
         }
@@ -47,7 +47,6 @@ public class SortTest {
         }
         array[low] = array[j];
         array[j] = temp;
-        //分别递归左右列表
         quickSort(array, low, j - 1);
         quickSort(array, j + 1, high);
     }
@@ -59,12 +58,12 @@ public class SortTest {
      */
     private static void bubbleSort(int[] array) {
         int temp;
-        for (int j = 0; j < array.length - 1; j++) {
-            for (int i = 0; i < array.length - j - 1; i++) {
-                if (array[i] > array[i + 1]) {
-                    temp = array[i];
-                    array[i] = array[i + 1];
-                    array[i + 1] = temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j] > array[j + 1]) {
+                    temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
                 }
             }
         }
@@ -72,22 +71,20 @@ public class SortTest {
 
 
     /**
-     *
      * https://zhuanlan.zhihu.com/p/123048793
      */
     private static void selectSort(int[] array) {
-        int temp;
-        int minIndex;
-        for (int j = 0; j < array.length - 1; j++) {
-            minIndex = j;
-            for (int i = minIndex; i < array.length - 1; i++) {
-                if (array[i + 1] < array[minIndex]) {
-                    minIndex = i + 1;
+        int temp, minIndex;
+        for (int i = 0; i < array.length - 1; i++) {
+            minIndex = i;
+            for (int j = minIndex; j < array.length - 1; j++) {
+                if (array[j + 1] < array[minIndex]) {
+                    minIndex = j + 1;
                 }
             }
             temp = array[minIndex];
-            array[minIndex] = array[j];
-            array[j] = temp;
+            array[minIndex] = array[i];
+            array[i] = temp;
         }
     }
 }

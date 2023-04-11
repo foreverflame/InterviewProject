@@ -11,6 +11,7 @@ public class DataStructure {
         ListNode(E data) {
             this.value = data;
         }
+
         E value;
         ListNode<Integer> next;
     }
@@ -18,6 +19,7 @@ public class DataStructure {
     public static class Node<E> {
         E data;
         Node<E> next = null;
+
         Node(E data) {
             this.data = data;
         }
@@ -98,7 +100,6 @@ public class DataStructure {
      * 合并两个有序链表，简单的迭代法
      */
     private static ListNode<Integer> mergeTwoListsBySimple(ListNode<Integer> l1, ListNode<Integer> l2) {
-        // 类似归并排序中的合并过程
         ListNode<Integer> dummyHead = new ListNode<>(0);
         ListNode cur = dummyHead;
         while (l1 != null && l2 != null) {
@@ -112,7 +113,6 @@ public class DataStructure {
                 l2 = l2.next;
             }
         }
-        // 任一为空，直接连接另一条链表
         if (l1 == null) {
             cur.next = l2;
         } else {
@@ -129,11 +129,9 @@ public class DataStructure {
         if (l1 == null) {
             return l2;
         }
-
         if (l2 == null) {
             return l1;
         }
-
         ListNode<Integer> head;
         if (l1.value <= l2.value) {
             head = l1;
@@ -151,7 +149,6 @@ public class DataStructure {
         if (head == null || head.next == null) {
             return head;
         }
-
         ListNode<Integer> reverseNode = reverse(head.next);
         head.next.next = head;
         head.next = null;
@@ -165,7 +162,6 @@ public class DataStructure {
     private static ListNode<Integer> reverseBySimple(ListNode<Integer> head) {
         ListNode<Integer> prev = null;
         ListNode<Integer> curr = head;
-
         while (curr != null) {
             ListNode<Integer> nextTemp = curr.next;
             curr.next = prev;
@@ -179,13 +175,11 @@ public class DataStructure {
     //用数组实现栈
     public class MyStack<E> {
         int size;
-
         Object[] stack;
 
         MyStack() {
             stack = new Object[10];
         }
-
 
         private boolean isEmpty() {
             return size == 0;
@@ -205,11 +199,9 @@ public class DataStructure {
             return peek;
         }
 
-
         private E put(E data) {
             //扩充栈的大小
             ensuryCapsule(size + 1);
-
             stack[size++] = data;
             return data;
         }
@@ -220,7 +212,6 @@ public class DataStructure {
                 int newlength = 10;//每次都扩充10
                 stack = Arrays.copyOf(stack, newlength);
             }
-
         }
     }
 
@@ -236,12 +227,10 @@ public class DataStructure {
 
         private void put(E data) {
             Node<E> newNode = new Node<E>(data);
-
             if (head == null && tail == null) {
                 head = tail = newNode;
             } else {
                 tail.next = newNode;
-                //newnode 为最后一个节点
                 tail = newNode;
             }
         }
