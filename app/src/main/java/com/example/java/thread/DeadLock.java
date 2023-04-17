@@ -1,5 +1,10 @@
 package com.example.java.thread;
 
+
+/**
+ * https://blog.csdn.net/m0_52042041/article/details/113243568
+ * 线程死锁产生的原因
+ */
 public class DeadLock {
 
     private static final Object obj1 = new Object();
