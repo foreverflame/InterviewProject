@@ -1,0 +1,181 @@
+算法（LeetCode）
+
+1.排序
+2.二分法
+3.链表
+4.二叉树
+5.数组  
+6.字符串
+7.动态规划
+8.递归
+9.堆，栈
+
+
+java基础 (书 《深入理解java虚拟机》 《Effective java》)
+
+1.java线程，线程池
+2.继承执行顺序，多态体现
+3.泛型，泛型擦除，泛型的使用
+4.反射
+6.设计模式
+7.jvm 垃圾回收 classLoader
+8.java容器
+9.LRU算法
+10.注解
+11.内存模型
+12.异常机制
+
+
+
+Android相关 （书 《Android 开发艺术探索》 《kotlin核心编程》）
+
+1.kotlin
+2.mvvm，mvp，mvc 比较
+3.jetpack
+4.三方库源码阅读（retrofit，okhttp，Rxjava，glide，leakcanary，blockcanary）
+5.自定义控件 view绘制流程，事件传递
+6.网络编程，http，https
+7.handler
+8.性能优化，内存泄漏，anr，启动，apk瘦身，图片优化
+9.加固
+10.组件化
+11.Bitmap
+11.webView性能优化
+12.屏幕适配
+13.HashMap源码
+14.Fragment
+15.RecyclerView 源码解析，apk打包过程
+16.进程间通信，Binder原理
+17.android四大组件
+18.动画
+19.热修复	及原理
+20.jni，ndk(简单一个加密算法)
+21.多线程下载大文件注意点
+22.过去项目中遇到的难题，如何解决，项目中的亮点
+
+
+
+前沿技术
+
+
+
+
+视频相关/IM相关
+
+1.mp4 协议
+2.m3u8 协议
+3.flv 协议
+3.视频架构
+
+
+项目相关
+
+
+
+HR
+过去中遇到的难题，是如何解决的
+
+================================================
+JAVA
+1.容器(HashMap、HashSet、LinkedList、ArrayList等)
+2.内存模型
+3.DalvikVM和JVM的原理和不同（DalvikVM和JVM和ART三者）
+4.垃圾回收机制
+5.类加载方案
+6.反射的理解
+7.动态代理的理解
+8.线程池、如何使用、为什么使用
+9.多线程运行过程中，解决安全性问题
+10.设计模式的六大基本原则
+11.Java中4种引用类型
+12.泛型（泛型擦除）
+13.String、StringBuffer和StringBuilder的区别
+14.final和static的使用
+15.接口、抽象类的区别
+16.重载和重写
+17.java堆和栈的理解
+18.单例模式5种
+19.常用到的设计模式
+
+Android
+1.AMS、PMS、ActivityThread、Handler、Binder
+2.activity启动流程
+3.MeasureSpec的原理和计算规则
+4.android是如何通过activity进行交互的
+5.性能优化的方向是什么（布局、绘制（onDraw）、网络、安装包、内存）
+6.内存优化（内存抖动、内存溢出、内存泄漏）
+7.MAT、Leakcanary、memory profile
+8.UI卡顿问题（CPU紧张、耗时任务、GC、过度绘制）
+9.三级缓存
+10.MVC、MVP、MVVM
+11.sqlite
+12.jetpack
+
+网络
+1.网络框架对比
+2.自己设计网络框架
+3.网络请求缓存处理，OKHTTP怎么处理
+4.TPC/UDP
+5.DNS解析
+6.http和https的区别
+7.网络七层结构 应用层和传输层的关系
+8.签名机制
+9.视频加密传输
+
+Kotlin
+1.三大好处
+2.和java互通
+3.伴生对象
+4.协程
+5.extension functions
+6.kotlin中的抽象
+7.null检测机制（IDE）
+8.高级函数
+9.为什么比java慢
+10.泛型 in 和out
+11.扩展功能
+
+算法与数据结构
+1.hash
+2.最小生成树
+3.最短路径算法 4种
+4.KMP算法
+5.查找算法 7种
+6.排序算法
+7.跳跃表
+8.链表反转（头插法）
+9.广度、深度优先搜索算法
+10.计算二叉树最大深度，要求非递归
+
+源码分析
+1.Glide的缓存机制
+2.EventBus
+3.LeakCanary
+4.ARouter
+5.Rxjava线程切换原理、用了哪些设计模式
+6.Retrofit动态代理
+7.Okhttp内部原理
+8.事件分发机制 为什么要设计拦截
+9.view渲染
+10.app安装流程
+11.事件分发流程
+12.插件化原理
+13.组件化管理模式
+14.hook拦截
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

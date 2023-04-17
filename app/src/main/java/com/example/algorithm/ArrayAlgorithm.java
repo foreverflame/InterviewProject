@@ -14,23 +14,23 @@ public class ArrayAlgorithm {
 
 
         //集合的所有子集
-        int[] nums = {1, 2, 3, 4, -8, 6};
+        int[] nums = {5, 2, 9};
         int[] C = {1, 2, 3, 2, 2, 2, 5, 4, 2};
-//        List<List<Integer>> subsets = subsets(nums);
-//        for (List<Integer> datas : subsets) {
-//            System.out.println("----");
-//            for (Integer integer : datas) {
-//                System.out.println(integer + "");
-//            }
-//        }
+        List<List<Integer>> subsets = subsets(nums);
+        for (List<Integer> datas : subsets) {
+            System.out.println("----");
+            for (Integer integer : datas) {
+                System.out.println(integer + "");
+            }
+        }
 
 //        int[] sumIndex = getSumIndex(nums, 6);
 //        for (Integer integer : sumIndex) {
 //            System.out.println(integer);
 //        }
 
-        int secondNumbers = getSecondNumbers(nums);
-        System.out.println(secondNumbers);
+//        int secondNumbers = getSecondNumbers(nums);
+//        System.out.println(secondNumbers);
 
 //        merge(A, 3, B, 3);
 //        for (int i = 0; i < A.length; i++) {

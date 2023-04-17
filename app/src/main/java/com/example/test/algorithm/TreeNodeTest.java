@@ -96,7 +96,7 @@ public class TreeNodeTest {
 
 
     /**
-     * 递归判断二叉树是否堆成
+     * 递归判断二叉树是否对称
      */
     public boolean isMirror(TreeNode t1, TreeNode t2) {
         if (t1 == null && t2 == null) return true;
