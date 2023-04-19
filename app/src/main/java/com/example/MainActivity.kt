@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.kotlin.TestFlowViewModel
 import com.example.kotlin.inflate
 import com.example.widget.databinding.ActivityMain2Binding
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
                 test1()
             }
         }
+
+        Glide.with(this).load("").into(activityMain2Binding.image)
     }
 
 
