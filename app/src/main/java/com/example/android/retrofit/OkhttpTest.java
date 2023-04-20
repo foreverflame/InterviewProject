@@ -48,6 +48,7 @@ public class OkhttpTest {
 
     private void getRequest() {
         OkHttpClient okHttpClient = new OkHttpClient.Builder().connectTimeout(5, TimeUnit.SECONDS).build();
+        OkHttpClient build = new OkHttpClient.Builder().connectTimeout(5, TimeUnit.SECONDS).build();
         Request request = new Request.Builder().url("http://baidu.com")
                 .get()
                 .build();

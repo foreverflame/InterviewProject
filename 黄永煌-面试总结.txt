@@ -165,7 +165,19 @@ Kotlin
 
 
 
-
+=======面试技能=========
+熟练使用Java、Kotlin语言开发
+熟悉常用设计模式，有组件化和插件化开发经验
+熟悉零售pos系统开发
+熟悉广点通、穿山甲、快手联盟广告接入
+熟悉 Android平台下多媒体、视频应用开发
+熟悉Jetpack组件和MVVM框架的组合应用
+熟悉glide、okhttp、retrofit 等开源库使用
+熟悉Android内存优化、布局优化
+熟悉安卓端与H5的交互以及应用
+熟悉网络通信机制，TCP/IP、Http协议、MQTT协议、Socket编程
+熟悉 Android自定义控件
+熟悉git使用
 
 
 

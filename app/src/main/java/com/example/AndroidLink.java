@@ -74,6 +74,7 @@ public class AndroidLink {
     /**
      * 接口和抽象类的区别
      * https://blog.csdn.net/fenglibing/article/details/2745123?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+     * https://www.zhihu.com/question/20149818
      *
      */
 
