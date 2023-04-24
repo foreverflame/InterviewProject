@@ -18,6 +18,11 @@ public class NodeTest {
             this.value = data;
         }
 
+        ListNode(E data, ListNode<E> node) {
+            this.value = data;
+            this.next = node;
+        }
+
         ListNode<E> next;
     }
 
@@ -86,6 +91,26 @@ public class NodeTest {
         }
         return prev;
     }
+
+    /**
+     * 移除链表中倒数第N个节点
+     */
+    public ListNode<Integer> removeNthFromEnd(ListNode<Integer> head, int n) {
+        ListNode<Integer> dummy = new ListNode<>(0, head);
+        ListNode<Integer> first = head;
+        ListNode<Integer> second = dummy;
+        for (int i = 0; i < n; ++i) {
+            first = first.next;
+        }
+        while (first != null) {
+            first = first.next;
+            second = second.next;
+        }
+        second.next = second.next.next;
+        ListNode<Integer> ans = dummy.next;
+        return ans;
+    }
+
 
     /**
      * 用两个队列实现栈
@@ -164,6 +189,7 @@ public class NodeTest {
         public void push(Integer data) {
             stack1.push(data);
         }
+
         public Integer pop() {
             if (stack2.isEmpty()) {
                 while (!stack1.isEmpty()) {
@@ -173,4 +199,6 @@ public class NodeTest {
             return stack2.pop();
         }
     }
+
+
 }

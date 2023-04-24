@@ -13,7 +13,10 @@ public class SourceCodeLink {
      */
 
     /**
-     * activity manager service
+     * activity manager service activity启动流程
+     * https://www.sukaidev.top/2021/05/22/4cb0a496/
+     * https://github.com/jeanboydev/Android-ReadTheFuckingSourceCode/blob/master/article/android/framework/Android-Activity%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B.md
+     *https://blog.51cto.com/u_15127640/2754132
      */
 
     /**
