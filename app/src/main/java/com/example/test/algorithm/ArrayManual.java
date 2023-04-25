@@ -11,10 +11,17 @@ import java.util.TreeSet;
 public class ArrayManual {
 
     public static void main(String[] args) {
-        int[] array = new int[]{1, 2, 5, 8, 9, 12, 30, 99};
-        int key = 30, low = 0, high = array.length - 1;
-        int findKeyIndex = binarySearch(array, key, low, high);
-        System.out.println("key index:" + findKeyIndex);
+//        int[] array = new int[]{1, 2, 5, 8, 9, 12, 30, 99};
+//        int key = 30, low = 0, high = array.length - 1;
+//        int findKeyIndex = binarySearch(array, key, low, high);
+//        System.out.println("key index:" + findKeyIndex);
+
+        String str = "abcabcbb";
+//        int count = lengthOfLongestSubstring(str);
+
+        String s = longestPalindrome1(str);
+        System.out.println(s);
+
     }
 
 
@@ -66,4 +73,64 @@ public class ArrayManual {
             return mid;
         }
     }
+
+    /**
+     * 字符串最长子串长度 滑动窗口
+     * https://leetcode.cn/problems/longest-substring-without-repeating-characters/solution/hua-dong-chuang-kou-by-powcai/
+     */
+    public static int lengthOfLongestSubstring(String s) {
+        if (s.length() == 0) return 0;
+        HashMap<Character, Integer> map = new HashMap<>();
+        int maxLen = 0;
+        int left = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
+            }
+            map.put(s.charAt(i), i);
+            maxLen = Math.max(maxLen, i - left + 1);
+        }
+        return maxLen;
+    }
+
+    /**
+     * https://leetcode.cn/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-fa-he-dong-tai-gui-hua-by-reedfa/
+     */
+    public static String longestPalindrome1(String s) {
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+        int strLen = s.length();
+        int left = 0;
+        int right = 0;
+        int len = 1;
+        int maxStart = 0;
+        int maxLen = 0;
+
+        for (int i = 0; i < strLen; i++) {
+            left = i - 1;
+            right = i + 1;
+            while (left >= 0 && s.charAt(left) == s.charAt(i)) {
+                len++;
+                left--;
+            }
+            while (right < strLen && s.charAt(right) == s.charAt(i)) {
+                len++;
+                right++;
+            }
+            while (left >= 0 && right < strLen && s.charAt(right) == s.charAt(left)) {
+                len = len + 2;
+                left--;
+                right++;
+            }
+            if (len > maxLen) {
+                maxLen = len;
+                maxStart = left;
+            }
+            len = 1;
+        }
+        return s.substring(maxStart + 1, maxStart + maxLen + 1);
+
+    }
+
 }
