@@ -1,5 +1,7 @@
 package com.example.test.algorithm;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.TreeSet;
 
@@ -24,9 +26,19 @@ public class ArrayTest {
 //        int count = removeDuplicates(array1);
 //        System.out.println(count);
 
-        int[] array1 = new int[]{1, 2, 3, 4, 5, 6, 7};
-        reverseNumK(array1, 3);
-        for (int j : array1) {
+//        int[] array1 = new int[]{1, 2, 3, 4, 5, 6, 7};
+//        reverseNumK(array1, 3);
+//        for (int j : array1) {
+//            System.out.println(j);
+//        }
+
+//        int[] array1 = new int[]{1, 1, 9, 9, 9};
+//        int i = singleNumber(array1);
+//        System.out.println(i);
+
+        int[] array1 = new int[]{1, 9};
+        int[] ints = plusOne(array1);
+        for (int j : ints) {
             System.out.println(j);
         }
 
@@ -187,5 +199,84 @@ public class ArrayTest {
         }
         return num;
     }
+
+    /**
+     * 异或运算
+     * 返回数组中出现一次的数
+     */
+    private static int singleNumber(int[] nums) {
+        int reduce = 0;
+        for (int num : nums) {
+            reduce = reduce ^ num;
+        }
+        return reduce;
+    }
+
+
+    /**
+     * 返回两个数组的交集
+     * 通过两个指针
+     */
+    private static int[] interSet(int[] num1, int[] num2) {
+        Arrays.sort(num1);
+        Arrays.sort(num2);
+        int i = 0;
+        int j = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+        while (i < num1.length && j < num2.length) {
+            if (num1[i] < num2[j]) {
+                i++;
+            } else if (num1[i] > num2[j]) {
+                j++;
+            } else {
+                list.add(num1[i]);
+                i++;
+                j++;
+            }
+        }
+        int[] res = new int[list.size()];
+        int index = 0;
+        for (int k = 0; k < list.size(); k++) {
+            res[index++] = list.get(k);
+        }
+        return res;
+    }
+
+    /**
+     * 数组加1进位
+     */
+    private static int[] plusOne(int[] digits) {
+        int length = digits.length;
+        for (int i = length - 1; i >= 0; i--) {
+            if (digits[i] != 9) {
+                digits[i]++;
+                return digits;
+            } else {
+                digits[i] = 0;
+            }
+        }
+        int[] temp = new int[length + 1];
+        temp[0] = 1;
+        return temp;
+    }
+
+    /**
+     * 把数组中0的数都移动到末尾
+     */
+    private static void removeZero(int[] num) {
+        if (num == null || num.length == 0) {
+            return;
+        }
+        int index = 0;
+        for (int i = 0; i < num.length; i++) {
+            if (num[i] != 0) {
+                num[index++] = num[i];
+            }
+        }
+        while (index < num.length) {
+            num[index++] = 0;
+        }
+    }
+
 
 }
