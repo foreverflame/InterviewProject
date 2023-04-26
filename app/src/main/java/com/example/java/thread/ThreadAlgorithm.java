@@ -9,34 +9,26 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ThreadAlgorithm {
 
     private Semaphore sea_first_two = new Semaphore(0);
-
     private Semaphore sea_two_second = new Semaphore(0);
-
 
     ThreadAlgorithm() {
 
     }
 
-
     private void runFirst(Runnable first) throws InterruptedException {
         first.run();
         sea_first_two.release();
-
     }
-
 
     private void runSecond(Runnable second) throws InterruptedException {
         sea_first_two.acquire();
         second.run();
         sea_two_second.release();
-
     }
 
     private void runThird(Runnable thirid) throws InterruptedException {
         sea_two_second.acquire();
         thirid.run();
-
-
     }
 
     public static class Foo {

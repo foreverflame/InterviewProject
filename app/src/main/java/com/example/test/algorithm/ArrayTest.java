@@ -8,7 +8,7 @@ import java.util.TreeSet;
  * @author: huangyonghuang
  * @date: 2023/1/31
  */
-public class ArrayManual {
+public class ArrayTest {
 
     public static void main(String[] args) {
 //        int[] array = new int[]{1, 2, 5, 8, 9, 12, 30, 99};
@@ -94,6 +94,7 @@ public class ArrayManual {
     }
 
     /**
+     * 最长回文子串
      * https://leetcode.cn/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-fa-he-dong-tai-gui-hua-by-reedfa/
      */
     public static String longestPalindrome1(String s) {
