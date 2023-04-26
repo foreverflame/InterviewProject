@@ -15,12 +15,20 @@ public class ArrayTest {
 //        int key = 30, low = 0, high = array.length - 1;
 //        int findKeyIndex = binarySearch(array, key, low, high);
 //        System.out.println("key index:" + findKeyIndex);
-
-        String str = "abcabcbb";
+//        String str = "abcabcbb";
 //        int count = lengthOfLongestSubstring(str);
+//        String s = longestPalindrome1(str);
+//        System.out.println(s);
 
-        String s = longestPalindrome1(str);
-        System.out.println(s);
+//        int[] array1 = new int[]{0, 1, 1, 1, 1, 2, 2, 3, 3, 4};
+//        int count = removeDuplicates(array1);
+//        System.out.println(count);
+
+        int[] array1 = new int[]{1, 2, 3, 4, 5, 6, 7};
+        reverseNumK(array1, 3);
+        for (int j : array1) {
+            System.out.println(j);
+        }
 
     }
 
@@ -131,7 +139,53 @@ public class ArrayTest {
             len = 1;
         }
         return s.substring(maxStart + 1, maxStart + maxLen + 1);
+    }
 
+
+    /**
+     * 移除数组中重复元素
+     */
+    private static int removeDuplicates(int[] A) {
+        if (A == null || A.length == 0) {
+            return 0;
+        }
+        int left = 0;
+        for (int right = 1; right < A.length; right++) {
+            if (A[left] != A[right]) {
+                A[++left] = A[right];
+            }
+        }
+        return ++left;
+    }
+
+    /**
+     * 股票的最优收益
+     */
+    private int maxProfit(int[] prices) {
+        int max = 0;
+        for (int i = 1; i < prices.length; i++) {
+            if (prices[i] > prices[i - 1]) {
+                max = max + (prices[i] - prices[i - 1]);
+            }
+        }
+        return max;
+    }
+
+
+    /**
+     * 旋转数组
+     * https://leetcode.cn/leetbook/read/top-interview-questions-easy/x2skh7/
+     */
+    private static int[] reverseNumK(int[] num, int k) {
+        int length = num.length;
+        int[] temp = new int[length];
+        for (int i = 0; i < length; i++) {
+            temp[i] = num[i];
+        }
+        for (int j = 0; j < length; j++) {
+            num[(j + k) % length] = temp[j];
+        }
+        return num;
     }
 
 }
