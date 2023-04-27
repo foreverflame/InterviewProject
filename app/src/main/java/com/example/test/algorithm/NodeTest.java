@@ -22,6 +22,23 @@ public class NodeTest {
         ListNode<E> next;
     }
 
+    public static void main(String[] args) {
+        ListNode<Integer> l1 = new ListNode<>(0);
+        l1.next = new ListNode<>(2);
+        l1.next.next = new ListNode<>(5);
+        l1.next.next.next = new ListNode<>(7);
+        l1.next.next.next.next = new ListNode<>(8);
+
+        ListNode<Integer> l2 = new ListNode<>(1);
+        l2.next = new ListNode<>(3);
+        l2.next.next = new ListNode<>(4);
+        l2.next.next.next = new ListNode<>(5);
+
+        int length = length(l1);
+        System.out.println(length);
+
+    }
+
 
     /**
      * 递归合并两条有序链表
@@ -123,5 +140,42 @@ public class NodeTest {
         }
         return slow;
     }
+
+
+    /**
+     * 给定某个节点，将这个节点从链表中删除
+     */
+    private static void deleteNode(ListNode<Integer> node) {
+        node.value = node.next.value;
+        node.next = node.next.next;
+    }
+
+
+    /**
+     * 删除链表中倒数第n个节点
+     */
+    private static ListNode<Integer> deleteNthNode(ListNode<Integer> head, int n) {
+        ListNode<Integer> fast = head;
+        ListNode<Integer> slow = head;
+        for (int i = 0; i < n; i++) {
+            fast = fast.next;
+        }
+        while (fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        slow.next = slow.next.next;
+        return head;
+    }
+
+    /**
+     * 递归方法求链表的长度
+     */
+    private static int length(ListNode head) {
+        if (head == null)
+            return 0;
+        return length(head.next) + 1;
+    }
+
 
 }

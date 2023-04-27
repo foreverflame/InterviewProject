@@ -64,7 +64,7 @@ public class TreeNodeTest {
     /**
      * 先序遍历
      */
-    public void preOrder(TreeNode node) {
+    private void preOrder(TreeNode node) {
         if (node != null) {
             System.out.println(node.data);
             preOrder(node.left);
@@ -75,7 +75,7 @@ public class TreeNodeTest {
     /**
      * 中序遍历
      */
-    public void centerOrder(TreeNode node) {
+    private void centerOrder(TreeNode node) {
         if (node != null) {
             centerOrder(node.left);
             System.out.println(node.data);
@@ -86,7 +86,7 @@ public class TreeNodeTest {
     /**
      * 后序遍历
      */
-    public void postOrder(TreeNode node) {
+    private void postOrder(TreeNode node) {
         if (node != null) {
             postOrder(node.left);
             postOrder(node.right);
@@ -98,12 +98,37 @@ public class TreeNodeTest {
     /**
      * 递归判断二叉树是否对称
      */
-    public boolean isMirror(TreeNode t1, TreeNode t2) {
+    private boolean isMirror(TreeNode t1, TreeNode t2) {
         if (t1 == null && t2 == null) return true;
         if (t1 == null || t2 == null) return false;
-        return (t1.data == t2.data)
-                && isMirror(t1.left, t2.right)
-                && isMirror(t1.right, t2.left);
+        return (t1.data == t2.data) && isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);
+    }
+
+
+    /**
+     * 二叉树的深度
+     */
+    private int maxDepth(TreeNode root) {
+        return root == null ? 0 : Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+
+    /**
+     * 验证二叉搜索数
+     * https://leetcode.cn/leetbook/read/top-interview-questions-easy/xn08xg/?discussion=69ga70
+     */
+    public boolean isValidBST(TreeNode node) {
+        return isValidBST(node, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    public boolean isValidBST(TreeNode node, long min, long max) {
+        if (node == null) {
+            return true;
+        }
+        if (node.data <= min || node.data >= max) {
+            return false;
+        }
+        //左子树
+        return isValidBST(node.left, min, node.data) && isValidBST(node.right, node.data, max);
     }
 
 
