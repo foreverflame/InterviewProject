@@ -61,23 +61,6 @@ public class ArrayTest {
 
 
     /**
-     * 获取数组中和为某个数的索引
-     */
-    public static int[] getIndex(int[] array, int target) {
-        HashMap<Integer, Integer> hashMap = new HashMap<>();
-        int[] index = new int[2];
-        for (int i = 0; i < array.length - 1; i++) {
-            if (hashMap.containsKey(array[i])) {
-                index[0] = i;
-                index[1] = hashMap.get(array[i]);
-            }
-            hashMap.put(target - array[i], i);
-        }
-        return index;
-    }
-
-
-    /**
      * 有序数组二分查找,返回要找的值的索引
      */
     public static int binarySearch(int[] array, int key, int low, int high) {
@@ -155,7 +138,7 @@ public class ArrayTest {
 
 
     /**
-     * 移除数组中重复元素
+     * 移除有序数组中重复元素，保持元素数组相对顺序不变
      */
     private static int removeDuplicates(int[] A) {
         if (A == null || A.length == 0) {
@@ -218,6 +201,7 @@ public class ArrayTest {
      * 通过两个指针
      */
     private static int[] interSet(int[] num1, int[] num2) {
+        //要先排序
         Arrays.sort(num1);
         Arrays.sort(num2);
         int i = 0;
@@ -278,5 +262,24 @@ public class ArrayTest {
         }
     }
 
+
+    /**
+     * 获取数组中和为某个数的索引
+     * [1,3,4,6,8,12] target=10
+     * 用hash表存储数组
+     */
+    public static int[] getIndex(int[] array, int target) {
+        HashMap<Integer, Integer> hashMap = new HashMap<>();
+        int[] index = new int[2];
+        for (int i = 0; i < array.length - 1; i++) {
+            if (hashMap.containsKey(array[i])) { //6已经存入hashmap中
+                index[0] = hashMap.get(array[i]);
+                index[1] = i;
+            }
+            hashMap.put(target - array[i], i);
+            // 9-0,7-1,6-2
+        }
+        return index;
+    }
 
 }
