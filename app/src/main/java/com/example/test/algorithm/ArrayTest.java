@@ -174,9 +174,11 @@ public class ArrayTest {
     private static int[] reverseNumK(int[] num, int k) {
         int length = num.length;
         int[] temp = new int[length];
+        //把原数组值放到一个临时数组中，
         for (int i = 0; i < length; i++) {
             temp[i] = num[i];
         }
+        //然后在把临时数组的值重新放到原数组，并且往右移动k位
         for (int j = 0; j < length; j++) {
             num[(j + k) % length] = temp[j];
         }
