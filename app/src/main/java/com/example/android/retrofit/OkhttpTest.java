@@ -35,7 +35,7 @@ public class OkhttpTest {
         result.enqueue(new retrofit2.Callback<String>() {
             @Override
             public void onResponse(retrofit2.Call<String> call, retrofit2.Response<String> response) {
-
+                    //在主线程里，通过handler把数据发送到主线程
             }
 
             @Override
