@@ -13,9 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OkhttpTest {
 
-
     private void getRetrofitData() {
-
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://baidu.com")
                 .addConverterFactory(GsonConverterFactory.create())

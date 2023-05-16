@@ -34,6 +34,11 @@ public class AndroidLink {
      * https://www.jianshu.com/p/b8c578b07fbc
      */
 
+    /**
+     * 代理模式和装饰模式的区别
+     * https://blog.csdn.net/SPACESTUDIO/article/details/107434876
+     */
+
 
     /**
      * double check
@@ -60,9 +65,10 @@ public class AndroidLink {
      */
 
     /**
-     * okhttp okhtt 二次封装 okhttProjectDemo
+     * okhttp
      * https://www.jianshu.com/p/37e26f4ea57b
      * https://www.jianshu.com/p/867b11a962ee
+     * https://zhuanlan.zhihu.com/p/116777864
      */
 
 
@@ -165,11 +171,6 @@ public class AndroidLink {
      */
 
 
-    /**
-     * okhttp 封装
-     * https://www.jianshu.com/p/ddbf69d1c9d1
-     */
-
 
     /**
      * android 属性动画，差值器，估值器
@@ -188,9 +189,11 @@ public class AndroidLink {
 
 
     /**
-     * 图片相关 glide 源码,retrofit源码，okhttp源码，leakcanary，blockcanary,rxjava
-     * https://blog.csdn.net/guolin_blog/article/details/53939176/  glide 源码解析
-     * https://blog.csdn.net/qq_15827013/article/details/97893860  glide 大致流程
+     * 图片相关 glide 源码
+     * https://juejin.cn/post/6882536990400020494#heading-72
+     * https://www.youtube.com/watch?v=-f8OxnBYvfo 3.+版本
+     * https://juejin.cn/post/6882536990400020494
+     * https://www.bilibili.com/video/BV1bR4y1P7N3?p=5&spm_id_from=pageDriver&vd_source=6df230978ac4c6c9050f1c62d21767a5
      */
 
 
