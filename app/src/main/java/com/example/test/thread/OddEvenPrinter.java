@@ -17,7 +17,7 @@ public class OddEvenPrinter {
     }
 
     public static void main(String[] args) {
-        OddEvenPrinter printer = new OddEvenPrinter(0, 10);
+        OddEvenPrinter printer = new OddEvenPrinter(0, 100);
         new Thread(printer::print, "A").start();
         new Thread(printer::print, "B").start();
     }
