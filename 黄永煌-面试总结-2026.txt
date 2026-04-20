@@ -1,0 +1,9 @@
+开发语言 Java / Kotlin· Dart（Flutter）· C#（WPF）
+Flutter 能力 熟悉 Flutter 开发，使用 Riverpod 状态管理，MethodChannel 实现 Flutter 与原生通信
+架构设计 MVVM / MVP · Jetpack（ViewModel、LiveData、Room、Navigation）
+SDK 开发 广告 SDK（国内+海外）· 视频播放器 SDK · 扫码 / 支付 / 硬件对接 SDK
+性能优化 启动速度、内存泄漏、卡顿治理、APK 瘦身、LeakCanary 分析
+跨端开发 Flutter · Tauri · WPF 桌面应用
+AI 能力 Claude Code / Codex / Gemini / GLM / MiniMax / Kimi AI 开发集成
+工程化 Jenkins CI/CD · 组件化 · Maven 私有库发布
+其他 MQTT · MLKit · 蓝牙/串口硬件通信 · 英语六级
