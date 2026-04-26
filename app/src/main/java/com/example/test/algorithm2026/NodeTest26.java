@@ -58,7 +58,6 @@ public class NodeTest26 {
             head = l2;
             head.next = mergeNode(l1, l2.next);
         }
-
         return head;
     }
 
@@ -74,6 +73,34 @@ public class NodeTest26 {
         }
         return prev;
 
+    }
+
+    private ListNode<Integer> hasCycle(ListNode<Integer> head) {
+        if (head == null) {
+            return null;
+        }
+        boolean hasCycle = false;
+        ListNode<Integer> slow = head;
+        ListNode<Integer> fast = head;
+        while (slow.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (fast == slow) {
+                hasCycle = true;
+                break;
+            }
+        }
+        if (hasCycle) {
+            ListNode<Integer> entryNode = head;
+            while (entryNode != slow) {
+                entryNode = entryNode.next;
+                slow = slow.next;
+            }
+            return entryNode;
+
+        } else {
+            return null;
+        }
     }
 
 
