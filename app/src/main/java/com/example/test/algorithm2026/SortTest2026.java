@@ -63,18 +63,25 @@ public class SortTest2026 {
     }
 
 
+    /**
+     * 选择排序
+     * https://zhuanlan.zhihu.com/p/123048793
+     */
     private static void selectSort(int[] array) {
-        int temp, minIndex;
+        int temp;
+        int minIndex;
         for (int i = 0; i < array.length - 1; i++) {
             minIndex = i;
-            for (int j = 0; j < array.length - 1; j++) {
-                if (array[minIndex] > array[j + 1]) {
+            for (int j = minIndex; j < array.length - 1; j++) {
+                if (array[j + 1] < array[minIndex]) {
                     minIndex = j + 1;
                 }
             }
-            temp = array[minIndex];
-            array[minIndex] = array[i];
-            array[i] = temp;
+            if (minIndex != i) {
+                temp = array[minIndex];
+                array[minIndex] = array[i];
+                array[i] = temp;
+            }
         }
     }
 

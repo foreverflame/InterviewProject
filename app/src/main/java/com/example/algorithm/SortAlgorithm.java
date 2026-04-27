@@ -86,19 +86,18 @@ public class SortAlgorithm {
     private static void selectSort(int[] array) {
         int temp;
         int minIndex;
-
-        for (int j = 0; j < array.length - 1; j++) {
-            minIndex = j;
-
-            for (int i = minIndex; i < array.length - 1; i++) {
-                if (array[i + 1] < array[minIndex]) {
-                    minIndex = i + 1;
+        for (int i = 0; i < array.length - 1; i++) {
+            minIndex = i;
+            for (int j = minIndex; j < array.length - 1; j++) {
+                if (array[j + 1] < array[minIndex]) {
+                    minIndex = j + 1;
                 }
             }
-
-            temp = array[minIndex];
-            array[minIndex] = array[j];
-            array[j] = temp;
+            if (minIndex != i) {
+                temp = array[minIndex];
+                array[minIndex] = array[i];
+                array[i] = temp;
+            }
         }
     }
 
