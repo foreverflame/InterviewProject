@@ -107,65 +107,51 @@ public class NodeAlgorithm {
         return prev;
     }
 
-
-    private ListNode<Integer> reverseNode(ListNode<Integer> head) {
-        ListNode<Integer> prev = null;
-        ListNode<Integer> curr = head;
-        while (curr != null) {
-            ListNode<Integer> nextTemp = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = nextTemp;
-        }
-        return prev;
-    }
-
-
     public class MyStack<E> {
-        int size;
-        Object[] stack;
+        private int size;
+        private Object[] stack;
 
-        MyStack() {
-            this.stack = new Object[]{10};
+        public MyStack() {
+            this.stack = new Object[10];
         }
 
-        private boolean isEmpty() {
+        public boolean isEmpty() {
             return size == 0;
         }
 
-        private E peek() {
-
+        @SuppressWarnings("unchecked")
+        public E peek() {
             if (isEmpty()) {
                 return null;
             }
-            Object object = stack[size - 1];
-            return (E) object;
+            return (E) stack[size - 1];
         }
 
-        private E pop() {
-            Object peek = peek();
+        @SuppressWarnings("unchecked")
+        public E pop() {
+            if (isEmpty()) {
+                return null;
+            }
+            E data = (E) stack[size - 1];
             stack[size - 1] = null;
             size--;
-            return (E) peek;
+            return data;
         }
 
-        private E push(E data) {
+        public E push(E data) {
             ensureSize(size + 1);
-            stack[size + 1] = data;
+            stack[size] = data;
             size++;
             return data;
-
         }
 
-        private void ensureSize(int size) {
-            int length = stack.length;
-            if (size > length) {
-                int newlenth = 10;
-                stack = Arrays.copyOf(stack, newlenth);
+        private void ensureSize(int minCapacity) {
+            if (minCapacity > stack.length) {
+                int newLength = stack.length * 2;
+                stack = Arrays.copyOf(stack, newLength);
             }
         }
     }
-
 
     /**
      * 链表反转
