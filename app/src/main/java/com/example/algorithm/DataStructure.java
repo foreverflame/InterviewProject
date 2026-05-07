@@ -207,10 +207,9 @@ public class DataStructure {
         }
 
         private void ensuryCapsule(int size) {
-            int length = stack.length;
-            if (size > length) {
-                int newlength = 10;//每次都扩充10
-                stack = Arrays.copyOf(stack, newlength);
+            if (size > stack.length) {
+                int newLength = stack.length + (stack.length / 2);
+                stack = Arrays.copyOf(stack, newLength);
             }
         }
     }
