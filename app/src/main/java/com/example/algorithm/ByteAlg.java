@@ -12,6 +12,24 @@ import java.util.TreeSet;
  */
 public class ByteAlg {
 
+    public static class ListNode<E> {
+        ListNode(E data) {
+            this.value = data;
+        }
+
+        E value;
+        ListNode<Integer> next;
+    }
+
+    public static class Node<E> {
+        E data;
+        Node<E> next = null;
+
+        Node(E data) {
+            this.data = data;
+        }
+    }
+
 
     /**
      * 括号是否匹配
@@ -169,6 +187,7 @@ public class ByteAlg {
 
     /**
      * 二分查找
+     *
      * @param num
      * @param low
      * @param high
@@ -189,6 +208,36 @@ public class ByteAlg {
         }
     }
 
+
+    /**
+     * 用快慢指针
+     * @param head
+     * @return
+     */
+    public ListNode findNodeRecycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        boolean isRecycle = false;
+        while (slow.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                isRecycle = true;
+                break;
+            }
+        }
+        if (isRecycle) {
+            ListNode start = head;
+            while (start != slow) {
+                start = start.next;
+                slow = slow.next;
+            }
+            return slow;
+
+        } else {
+            return null;
+        }
+    }
 
 
 }
