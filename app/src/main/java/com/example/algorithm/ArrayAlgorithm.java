@@ -96,19 +96,35 @@ public class ArrayAlgorithm {
 
     /**
      * 合并两个有序数组
+     * @param A
+     * @param m
+     * @param B
+     * @param n
      */
     private static void merge(int[] A, int m, int[] B, int n) {
-        // 先确保将其中一个数组中的数字遍历完
-        while (m > 0 && n > 0) {
-            // 对比选出较大的数放在 m + n - 1 的位置，并将选出此数的指针向前移动
-            A[m + n - 1] = A[m - 1] > B[n - 1] ? A[m-- - 1] : B[n-- - 1];
+        // 从后往前填，避免覆盖 A 中还没比较的元素
+        int i = m - 1;      // A 的有效元素末尾
+        int j = n - 1;      // B 的末尾
+        int k = m + n - 1;  // 合并后的末尾位置
+
+        // 双指针，从后往前比较，大的放后面
+        while (i >= 0 && j >= 0) {
+            if (A[i] > B[j]) {
+                A[k] = A[i];
+                i--;
+            } else {
+                A[k] = B[j];
+                j--;
+            }
+            k--;
         }
-        // 剩下的数都比已经遍历过的数小
-        // 如果 m 不为 0，则 A 没遍历完，都已经在 A 中不用再管
-        // 如果 n 不为 0，则 B 没遍历完，直接全移到 A 中相同的位置
-        while (n > 0) {
-            A[n - 1] = B[n - 1];
-            n--;
+
+        // 如果 B 还有剩余，复制到 A 前面
+        // A 有剩余不用管，已经在原位
+        while (j >= 0) {
+            A[k] = B[j];
+            j--;
+            k--;
         }
     }
 
