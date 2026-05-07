@@ -139,6 +139,7 @@ public class ByteAlg {
 
     /**
      * 合并两个有序数组，把数组放到A中
+     *
      * @param A
      * @param m
      * @param B
@@ -165,5 +166,29 @@ public class ByteAlg {
             k--;
         }
     }
+
+    /**
+     * 二分查找
+     * @param num
+     * @param low
+     * @param high
+     * @param key
+     * @return
+     */
+    public int binarySearch(int[] num, int low, int high, int key) {
+        if (num[low] > key || num[high] < key || low > high) {
+            return -1;
+        }
+        int mid = low + (high - low) / 2;
+        if (num[mid] > key) {
+            return binarySearch(num, low, mid - 1, key);
+        } else if (num[mid] < key) {
+            return binarySearch(num, mid + 1, high, key);
+        } else {
+            return mid;
+        }
+    }
+
+
 
 }
