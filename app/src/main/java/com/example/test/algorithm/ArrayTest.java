@@ -48,17 +48,23 @@ public class ArrayTest {
     /**
      * 获取数组中第几个数
      */
-    public static int getSecondNumber(int[] nums) {
+    public static Integer getSecondNumber(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return null;  // 或抛异常
+        }
         TreeSet<Integer> set = new TreeSet<>();
-        for (int i = 0; i < nums.length - 1; i++) {
-            set.add(nums[i]);
+
+        // 遍历所有元素（包括最后一个）
+        for (int num : nums) {
+            set.add(num);
             if (set.size() > 2) {
-                set.remove(set.first());
+                set.remove(set.first());  // 移除最小的，保留最大的两个
             }
         }
-        return set.size() < 2 ? set.last() : set.first();
-    }
 
+        // 如果所有元素相同，set.size() 会是 1
+        return set.size() < 2 ? null : set.first();
+    }
 
     /**
      * 有序数组二分查找,返回要找的值的索引
