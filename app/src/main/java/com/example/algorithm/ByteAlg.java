@@ -1,8 +1,10 @@
 package com.example.algorithm;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
+import java.util.TreeSet;
 
 /**
  * @author: huang
@@ -61,6 +63,7 @@ public class ByteAlg {
 
     /**
      * 求所有集合的子集合
+     *
      * @param nums
      * @return
      */
@@ -76,6 +79,63 @@ public class ByteAlg {
         }
         return res;
     }
+
+    /**
+     *
+     * @param nums
+     * @return
+     */
+    public Integer getSecondNums(int[] nums) {
+        if (nums == null || nums.length < 2) {
+            return null;
+        }
+        TreeSet<Integer> set = new TreeSet<>();
+        for (Integer num : nums) {
+            set.add(num);
+            if (set.size() > 2) {
+                set.remove(set.first());
+            }
+        }
+        return set.size() < 2 ? null : set.last();
+    }
+
+    public int[] getIndex(int[] nums, int target) {
+
+        int[] index = new int[2];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(nums[i])) {
+                index[0] = i;
+                index[1] = map.get(nums[i]);
+            }
+            map.put(target - nums[i], i);
+        }
+        return index;
+    }
+
+
+    /**
+     * 删除数组重复元素
+     *
+     * @param num
+     * @return
+     */
+    public int deleteDuplicateNum(int[] num) {
+        int n = num.length;
+        if (n == 0) {
+            return 0;
+        }
+        int fast = 1, slow = 1;
+        while (fast < n) {
+            if (num[fast] != num[fast - 1]) {
+                num[slow] = num[fast];
+                slow++;
+            }
+            fast++;
+        }
+        return slow;
+    }
+
 
 
 

@@ -127,23 +127,24 @@ public class ArrayAlgorithm {
     }
 
     /**
-     * 删除数组重复项
+     * 删除排序数组中的重复项
      * https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/solution
      */
-    public int removeDuplicates2(int[] nums) {
-        if (nums == null || nums.length == 0) return 0;
-        int p = 0;
-        int q = 1;
-        while (q < nums.length) {
-            if (nums[p] != nums[q]) {
-                nums[p + 1] = nums[q];
-                p++;
-            }
-            q++;
+    public int removeDuplicates(int[] nums) {
+        int n = nums.length;
+        if (n == 0) {
+            return 0;
         }
-        return p + 1;
+        int fast = 1, slow = 1;
+        while (fast < n) {
+            if (nums[fast] != nums[fast - 1]) {
+                nums[slow] = nums[fast];
+                ++slow;
+            }
+            ++fast;
+        }
+        return slow;
     }
-
 
     /**
      * 递归二分查找
