@@ -64,20 +64,36 @@ public class ByteAlg {
      * @param n
      * @return
      */
-    public int claim(int n) {
+    public int climbStairs(int n) {
+        if (n <= 2) return n;
+
+        int twoBack = 1;   // n-2
+        int oneBack = 2;   // n-1
+        for (int i = 3; i <= n; i++) {
+            int current = oneBack + twoBack;
+            twoBack = oneBack;
+            oneBack = current;
+        }
+        return oneBack;
+    }
+
+    public int climbStairs1(int n) {
+        int[] memo = new int[n + 1];  // 0 表示没算过
+        return dfs(n, memo);
+    }
+
+    private int dfs(int n, int[] memo) {
         if (n <= 2) {
             return n;
         }
-        int prev2 = 1;
-        int prev1 = 2;
-        for (int i = 3; i <= n; i++) {
-            int curr = prev1 + prev2;
-            prev1 = prev2;
-            prev2 = curr;
+        // 算过了直接返回
+        if (memo[n] != 0) {
+            return memo[n];
         }
-        return prev1;
+        // 没算过就算，并存起来
+        memo[n] = dfs(n - 1, memo) + dfs(n - 2, memo);
+        return memo[n];
     }
-
 
     /**
      * 求所有集合的子集合
