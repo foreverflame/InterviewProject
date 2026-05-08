@@ -285,4 +285,89 @@ public class ByteAlg {
         return prev;
     }
 
+    public boolean isSystem(TreeNode.MyTreeNode root) {
+        return isMirror(root, root);
+    }
+
+    public boolean isMirror(TreeNode.MyTreeNode t1, TreeNode.MyTreeNode t2) {
+        if (t1 == null && t2 == null) {
+            return true;
+        }
+        if (t1 == null || t2 == null) {
+            return false;
+        }
+        return (t1.data == t2.data) && isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);
+    }
+
+
+    public void quickSort(int[] array, int low, int high) {
+        if (low >= high) {
+            return;
+        }
+        int i, j, temp, t;
+        i = low;
+        j = high;
+        temp = array[low];
+        while (i < j) {
+            while (array[j] >= temp && i < j) {
+                j--;
+            }
+            while (array[i] <= temp && i < j) {
+                i++;
+            }
+            if (i < j) {
+                t = array[i];
+                array[i] = array[j];
+                array[j] = t;
+            }
+        }
+        array[low] = array[j];
+        array[j] = temp;
+        quickSort(array, low, j - 1);
+        quickSort(array, j + 1, high);
+    }
+
+
+    /**
+     * 冒泡排序
+     */
+    public static void bubbleSort(int[] array) {
+        int temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            boolean swapped = false;  // 每轮开始重置标志位
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j + 1] < array[j]) {
+                    temp = array[j + 1];
+                    array[j + 1] = array[j];
+                    array[j] = temp;
+                    swapped = true;  // 发生了交换
+                }
+            }
+            if (!swapped) {  // 本轮无交换，数组已有序，直接退出
+                break;
+            }
+        }
+    }
+
+    /**
+     * 选择排序
+     */
+    private static void selectSort(int[] array) {
+        int temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
+                }
+            }
+            if (minIndex != i) {
+                temp = array[minIndex];
+                array[minIndex] = array[i];
+                array[i] = temp;
+            }
+        }
+    }
+
+
 }

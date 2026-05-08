@@ -65,15 +65,20 @@ public class SortAlgorithm {
      * 冒泡排序,相邻的数字相互比较，大的数往后面移动
      * <a href="https://blog.csdn.net/NathanniuBee/article/details/83413879">...</a>
      */
-    private static void bubbleSort(int[] array) {
+    public static void bubbleSort(int[] array) {
         int temp;
-        for (int j = 0; j < array.length - 1; j++) {
-            for (int i = 0; i < array.length - 1 - j; i++) {
-                if (array[i] > array[i + 1]) {
-                    temp = array[i];
-                    array[i] = array[i + 1];
-                    array[i + 1] = temp;
+        for (int i = 0; i < array.length - 1; i++) {
+            boolean swapped = false;  // 每轮开始重置标志位
+            for (int j = 0; j < array.length - i - 1; j++) {
+                if (array[j + 1] < array[j]) {
+                    temp = array[j + 1];
+                    array[j + 1] = array[j];
+                    array[j] = temp;
+                    swapped = true;  // 发生了交换
                 }
+            }
+            if (!swapped) {  // 本轮无交换，数组已有序，直接退出
+                break;
             }
         }
     }
@@ -85,12 +90,11 @@ public class SortAlgorithm {
      */
     private static void selectSort(int[] array) {
         int temp;
-        int minIndex;
         for (int i = 0; i < array.length - 1; i++) {
-            minIndex = i;
-            for (int j = minIndex; j < array.length - 1; j++) {
-                if (array[j + 1] < array[minIndex]) {
-                    minIndex = j + 1;
+            int minIndex = i;
+            for (int j = i + 1; j < array.length; j++) {  // 直接遍历，语义清晰
+                if (array[j] < array[minIndex]) {
+                    minIndex = j;
                 }
             }
             if (minIndex != i) {

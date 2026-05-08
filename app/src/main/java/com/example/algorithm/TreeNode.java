@@ -24,12 +24,12 @@ public class TreeNode {
 
 
     //二叉树的数据结构
-    public static class Node {
-        Node left;
-        Node right;
+    public static class MyTreeNode {
+        MyTreeNode left;
+        MyTreeNode right;
         int data;
 
-        Node(int data) {
+        MyTreeNode(int data) {
             this.data = data;
             this.left = null;
             this.right = null;
@@ -39,31 +39,31 @@ public class TreeNode {
 
     //构建二叉树
     public static class BinaryTree {
-        Node root;
+        MyTreeNode root;
         BinaryTree() {
             root = null;
         }
         //二叉树中插入数据
         private void insert(int data) {
-            Node newNode = new Node(data);
+            MyTreeNode newMyTreeNode = new MyTreeNode(data);
             if (root == null) {
-                root = newNode;
+                root = newMyTreeNode;
             } else {
-                Node current = root;
-                Node parent;
+                MyTreeNode current = root;
+                MyTreeNode parent;
                 while (true) {
                     //用parent 节点存储current
                     parent = current;
                     if (data < current.data) {
                         current = current.left;
                         if (current == null) {
-                            parent.left = newNode;
+                            parent.left = newMyTreeNode;
                             return;
                         }
                     } else {
                         current = current.right;
                         if (current == null) {
-                            parent.right = newNode;
+                            parent.right = newMyTreeNode;
                             return;
                         }
                     }
@@ -79,29 +79,29 @@ public class TreeNode {
         }
 
         //二叉树的先序遍历 根-左-右
-        private void preOrder(Node localNode) {
-            if (localNode != null) {
-                System.out.println(localNode.data);
-                preOrder(localNode.left);
-                preOrder(localNode.right);
+        private void preOrder(MyTreeNode localMyTreeNode) {
+            if (localMyTreeNode != null) {
+                System.out.println(localMyTreeNode.data);
+                preOrder(localMyTreeNode.left);
+                preOrder(localMyTreeNode.right);
             }
         }
 
         //二叉树的中序遍历 左-根-右
-        private void centerOrder(Node localNode) {
-            if (localNode != null) {
-                centerOrder(localNode.left);
-                System.out.println(localNode.data);
-                centerOrder(localNode.right);
+        private void centerOrder(MyTreeNode localMyTreeNode) {
+            if (localMyTreeNode != null) {
+                centerOrder(localMyTreeNode.left);
+                System.out.println(localMyTreeNode.data);
+                centerOrder(localMyTreeNode.right);
             }
         }
 
         //二叉树的后序遍历 左-右-根
-        private void postOrder(Node localNode) {
-            if (localNode != null) {
-                postOrder(localNode.left);
-                postOrder(localNode.right);
-                System.out.println(localNode.data + "");
+        private void postOrder(MyTreeNode localMyTreeNode) {
+            if (localMyTreeNode != null) {
+                postOrder(localMyTreeNode.left);
+                postOrder(localMyTreeNode.right);
+                System.out.println(localMyTreeNode.data + "");
             }
         }
 
@@ -117,10 +117,10 @@ public class TreeNode {
             if (root == null) {
                 System.out.println("root is empty");
             }
-            Stack<Node> stack = new Stack<>();
+            Stack<MyTreeNode> stack = new Stack<>();
             stack.push(root);
             while (!stack.isEmpty()) {
-                Node pop = stack.pop();
+                MyTreeNode pop = stack.pop();
                 if (pop.left != null) {
                     stack.push(pop.left);
                 }
@@ -139,16 +139,16 @@ public class TreeNode {
             if (root == null) {
                 System.out.println("root is empty");
             }
-            ArrayDeque<Node> queue = new ArrayDeque<>();
+            ArrayDeque<MyTreeNode> queue = new ArrayDeque<>();
             queue.add(root);
             while (!queue.isEmpty()) {
                 //队列
-                Node node = queue.remove();
-                if (node.left != null) {
-                    queue.add(node.left);
+                MyTreeNode myTreeNode = queue.remove();
+                if (myTreeNode.left != null) {
+                    queue.add(myTreeNode.left);
                 }
-                if (node.right != null) {
-                    queue.add(node.right);
+                if (myTreeNode.right != null) {
+                    queue.add(myTreeNode.right);
                 }
             }
             System.out.println("/n");
@@ -161,7 +161,7 @@ public class TreeNode {
             this.root = initLocalTree(pre, 0, pre.length - 1, in, 0, in.length - 1);
         }
 
-        private Node initLocalTree(int[] pre, int start1, int end1, int[] in, int start2, int end2) {
+        private MyTreeNode initLocalTree(int[] pre, int start1, int end1, int[] in, int start2, int end2) {
 
             if (end1 < start1 || end2 < start2) {
                 return null;
@@ -169,15 +169,15 @@ public class TreeNode {
             //二叉树的根节点数据
             int rootData = pre[start1];
             //二叉树头结点
-            Node head = new Node(rootData);
+            MyTreeNode head = new MyTreeNode(rootData);
             //找找头结点再中序遍历中的索引值
             int indexInInOrder = findIndexInInOrder(in, rootData, start2, end2);
             //中序遍历的偏移量
             int offset = indexInInOrder - start2 - 1;
             //构建左子树
-            Node left = initLocalTree(pre, start1 + 1, start1 + 1 + offset, in, start2, start2 + offset);
+            MyTreeNode left = initLocalTree(pre, start1 + 1, start1 + 1 + offset, in, start2, start2 + offset);
             //构建右子树
-            Node right = initLocalTree(pre, start1 + offset + 2, end1, in, indexInInOrder + 1, end2);
+            MyTreeNode right = initLocalTree(pre, start1 + offset + 2, end1, in, indexInInOrder + 1, end2);
             head.left = left;
             head.right = right;
             return head;
@@ -197,11 +197,11 @@ public class TreeNode {
     /**
      * 二叉树对称
      */
-    public boolean isSymmetric(Node root) {
+    public boolean isSymmetric(MyTreeNode root) {
         return isMirror(root, root);
     }
 
-    public boolean isMirror(Node t1, Node t2) {
+    public boolean isMirror(MyTreeNode t1, MyTreeNode t2) {
         if (t1 == null && t2 == null) return true;
         if (t1 == null || t2 == null) return false;
         return (t1.data == t2.data)
@@ -212,13 +212,13 @@ public class TreeNode {
     /**
      * 二叉树对称迭代法
      */
-    public boolean isSymmetricByDiedai(Node root) {
-        Queue<Node> q = new LinkedList<>();
+    public boolean isSymmetricByDiedai(MyTreeNode root) {
+        Queue<MyTreeNode> q = new LinkedList<>();
         q.add(root);
         q.add(root);
         while (!q.isEmpty()) {
-            Node t1 = q.poll();
-            Node t2 = q.poll();
+            MyTreeNode t1 = q.poll();
+            MyTreeNode t2 = q.poll();
             if (t1 == null && t2 == null) continue;
             if (t1 == null || t2 == null) return false;
             if (t1.data != t2.data) return false;
