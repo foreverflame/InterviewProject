@@ -214,9 +214,9 @@ public class ByteAlg {
      * @param head
      * @return
      */
-    public ListNode findNodeRecycle(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = head;
+    public ListNode<Integer> findNodeRecycle(ListNode<Integer> head) {
+        ListNode<Integer> slow = head;
+        ListNode<Integer> fast = head;
         boolean isRecycle = false;
         while (slow.next != null && fast.next.next != null) {
             slow = slow.next;
@@ -227,7 +227,7 @@ public class ByteAlg {
             }
         }
         if (isRecycle) {
-            ListNode start = head;
+            ListNode<Integer> start = head;
             while (start != slow) {
                 start = start.next;
                 slow = slow.next;
