@@ -385,5 +385,71 @@ public class ByteAlg {
         }
     }
 
+    /**
+     * 爬楼梯，用滚动窗口
+     *
+     * @param n
+     * @return
+     */
+    public int climbStairs2(int n) {
+        if (n <= 2) {
+            return n;
+        }
+        int oneBack = 2;
+        int twoBack = 1;
+        //i 值从3开始
+        for (int i = 3; i <= n; i++) {
+            int current = oneBack + twoBack;
+            twoBack = oneBack;
+            oneBack = current;
+        }
+        return oneBack;
+    }
+
+    /**
+     * 删除数组中重复的元素，用快慢指针
+     *
+     * @param array
+     * @return
+     */
+    public int removeDuplicate(int[] array) {
+        if (array == null || array.length == 0) {
+            return -1;
+        }
+        int n = array.length;
+        int slow = 1;
+        int fast = 1;
+        while (fast < n) {
+            if (array[fast] != array[fast - 1]) {
+                array[slow] = array[fast];
+                slow++;
+            }
+            fast++;
+        }
+        return slow;
+    }
+
+    public void mergeNums(int[] A, int m, int[] B, int n) {
+        int i = m - 1;
+        int j = n - 1;
+        int k = m + n - 1;
+        while (i >= 0 && j >= 0) {
+            if (A[i] > B[j]) {
+                A[k] = A[i];
+                i--;
+            } else {
+                A[k] = B[j];
+                j--;
+            }
+            k--;
+        }
+
+        while (j >= 0) {
+            A[k] = B[j];
+            j--;
+            k--;
+        }
+    }
+
 
 }
