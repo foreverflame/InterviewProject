@@ -211,6 +211,7 @@ public class ByteAlg {
 
     /**
      * 用快慢指针
+     *
      * @param head
      * @return
      */
@@ -239,5 +240,49 @@ public class ByteAlg {
         }
     }
 
+
+    /**
+     * 合并两个有序链表
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public ListNode<Integer> mergeNode(ListNode<Integer> l1, ListNode<Integer> l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        ListNode<Integer> head;
+        if (l1.value <= l2.value) {
+            head = l1;
+            head.next = mergeNode(l1.next, l2);
+        } else {
+            head = l2;
+            head.next = mergeNode(l1, l2.next);
+        }
+        return head;
+
+    }
+
+    /**
+     * 链表反转
+     *
+     * @param head
+     * @return
+     */
+    public ListNode<Integer> reverseNode(ListNode<Integer> head) {
+        ListNode<Integer> prev = null;
+        ListNode<Integer> curr = head;
+        while (curr != null) {
+            ListNode<Integer> tmp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = tmp;
+        }
+        return prev;
+    }
 
 }
