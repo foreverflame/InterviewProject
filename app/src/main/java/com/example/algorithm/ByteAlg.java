@@ -1,6 +1,8 @@
 package com.example.algorithm;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Stack;
@@ -429,6 +431,13 @@ public class ByteAlg {
         return slow;
     }
 
+    /**
+     * 合并两个有序数组
+     * @param A
+     * @param m
+     * @param B
+     * @param n
+     */
     public void mergeNums(int[] A, int m, int[] B, int n) {
         int i = m - 1;
         int j = n - 1;
@@ -490,5 +499,34 @@ public class ByteAlg {
         return new int[]{first, last};
     }
 
+
+    /**
+     * 字符串最长子串长度
+     * @param s
+     * @return
+     */
+    public int lengthOfLongestSubstring(String s) {
+        if (s == null || s.isEmpty()) return 0;
+
+        int[] index = new int[128];
+        Arrays.fill(index, -1);
+
+        int left = 0, maxLen = 0;
+
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            int lastPos = index[c];
+
+            // 如果字符出现过，且在窗口内，收缩左边界
+            if (lastPos != -1 && lastPos >= left) {
+                left = lastPos + 1;
+            }
+
+            index[c] = right;  // 更新最新位置
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+
+        return maxLen;
+    }
 
 }
